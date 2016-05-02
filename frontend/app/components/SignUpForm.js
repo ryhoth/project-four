@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 
-class SignIn extends Component {
+class SignUpForm extends Component {
   render () {
     return (
       <form>
@@ -32,4 +32,4 @@ class SignIn extends Component {
 }
 
 
-export default SignIn;
+export default SignUpForm;

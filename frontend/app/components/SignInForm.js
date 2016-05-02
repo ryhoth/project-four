@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 
-class SignIn extends Component {
+class SignInForm extends Component {
   render () {
     return (
       <Form inline>
@@ -28,4 +28,4 @@ class SignIn extends Component {
 }
 
 
-export default SignIn;
+export default SignInForm;

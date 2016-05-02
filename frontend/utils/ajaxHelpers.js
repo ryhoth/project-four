@@ -9,7 +9,7 @@ module.exports = {
     const client = localStorage.client;
 
     axios.get(this.baseUrl + '/products', {
-      // these 3 tokens will be sent to server for auth 
+      // these 3 tokens will be sent to server for auth
       headers: {
         'uid': uid,
         'access-token': accessToken,
@@ -31,17 +31,6 @@ module.exports = {
     });
   }
 };
-
-
-
-
-
-
-
-
-
-
-
 
 
 // callback example

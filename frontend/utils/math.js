@@ -67,12 +67,11 @@ var applyPercentExpenseOnRow = function (arr, perc){
 	for (var i= 0; i<arr.length; i++){
 		arr[i] = arr[i] * (1 + perc);
 	}
-	console.log("calc done", arr);
 	return arr;
 };
 
-// [roles],[salaries],[],[for loop call tally row each from monthly salary # of months], [for loop call tally clm each from...]
-
-var headCountTable = function (){
-
-}
+var headCountTable = function (obj, months) {
+		for(var i=0; i < length.obj; i++) {
+				obj["role"];
+		}
+};

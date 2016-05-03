@@ -19,7 +19,8 @@ var arrayOfForms = [
 	}
 ];
 
-var form2Table = function (arr) {
+var xlFactory = {
+	form2Table : function (arr) {
 	// creates a place holder object
 	var placeHolderObject = {};
 	// fills that object with arrays from one sample form
@@ -32,134 +33,182 @@ var form2Table = function (arr) {
 				placeHolderObject[propi].push(arr[i][propi]);
 			}
 		}
-			console.log(placeHolderObject);
 			return placeHolderObject;
-};
-
-var x = form2Table(arrayOfForms);
-
-var sumRow = function (obj, key) {
-	var sum = 0;
-	if (typeof obj[key][0] === "number") {
-		for (var i = 0; i < obj[key].length ; i++){
-			sum += obj[key][i];
-		}
-	} else {
-		console.log("please enter a number data array");
-	}
-	return sum;
-};
-
-var sumColumn = function (obj, idx) {
-	var sum = 0;
-		for (var prop in obj){
-			if (typeof obj[prop][idx] === "number") {
-				sum += obj[prop][idx];
+	},
+	sumRow : function (obj, key) {
+		var sum = 0;
+		if (typeof obj[key][0] === "number") {
+			for (var i = 0; i < obj[key].length ; i++){
+				sum += obj[key][i];
 			}
+		} else {
+				console.log("please enter a number data array");
 		}
-	return sum;
-};
-
-var calcPercentExpenseOnRow = function (arr, perc){
-	var placeHolderArr = [];
-	for (var i= 0; i<arr.length; i++){
-		placeHolderArr.push(arr[i] * (perc));
-	}
-	return placeHolderArr;
-};
-
-var applyPercentExpenseOnRow = function (arr, perc){
-	var placeHolderArr = [];
-	for (var i= 0; i<arr.length; i++){
-		placeHolderArr.push(arr[i] * (1 + perc));
-	}
-	return placeHolderArr;
-};
-
-
-var makeColumnArray = function(obj, idx){
-	var columnArray = [];
-	for (var prop in obj){
+		return sum;
+	},
+	sumColumn : function (obj, idx) {
+		var sum = 0;
+			for (var prop in obj){
+				if (typeof obj[prop][idx] === "number") {
+					sum += obj[prop][idx];
+				}
+			}
+		return sum;
+	},
+	makeColumnArray : function(obj, idx){
+		var columnArray = [];
+		for (var prop in obj){
 			columnArray.push(obj[prop][idx]);
 		}
-	console.log(columnArray);
-	return columnArray;
-};
-
-// makeColumnArray(x, 0);
-
-var sumArray = function (arr){
-	var sum = 0;
-	for(var i=0; i < arr.length ; i++){
-		sum += arr[i];
+		return columnArray;
+	},
+	sumArray : function (arr){
+		var sum = 0;
+		for(var i=0; i < arr.length ; i++){
+			sum += arr[i];
+		}
+		return sum;
+	},
+	addsSumToEndArray : function (arr) {
+		var theSum = xlFactory.sumArray(arr);
+		var placeHolderArr = arr;
+		placeHolderArr.push(theSum);
+		return placeHolderArr;
+	},
+	monthsGenerator : function (){
+		var arr = [];
+		for(var i = 0; i <= 12; i++){
+			arr.push("Month "+i);
+		}
+		return arr;
+	},
+	spreadElements : function(RowArrayToPush, objectWithMembers, memberProp, key){
+		for(var i = 0; i < objectWithMembers[memberProp].length; i++){
+			var onerow =[];
+			for(var j = 0; j < 12; j++){
+				onerow.push(objectWithMembers[key][i]);
+			}
+			var completeRow = xlFactory.addsSumToEndArray(onerow);
+			onerow.unshift(objectWithMembers[memberProp][i]);
+			RowArrayToPush.push(onerow);
+		}
+	},
+	sumMonthlies : function(RowArrayToPush, objectWithMembers, memberProp, key){
+			var onerow =[];
+			for(var j = 0; j < 12; j++){
+				onerow.push(xlFactory.sumRow(objectWithMembers, key));
+			}
+			var completeRow = xlFactory.addsSumToEndArray(onerow);
+			onerow.unshift("Monthlies");
+			RowArrayToPush.push(onerow);
+			return onerow;
+	},
+	arrOp : function (arr1, arr2, operator){
+		var arrayPlaceholder = [];
+		switch(operator){
+			case "add":
+				for(var i=0; i < arr1.length; i++){
+					if (typeof arr1[i] === "number" ){
+						arrayPlaceholder.push(arr1[i] + arr2[i]);
+					}
+				}
+				return arrayPlaceholder;
+			case "sbutract":
+				for(var j=0; j < arr1.length; j++){
+					if (typeof arr1[j] === "number" ){
+						arrayPlaceholder.push(arr1[j] - arr2[j]);
+					}
+				}
+				return arrayPlaceholder;
+			case "multiply":
+				for(var k=0; k < arr1.length; k++){
+					if (typeof arr1[k] === "number" ){
+						arrayPlaceholder.push(arr1[k] * arr2[k]);
+					}
+				}
+				return arrayPlaceholder;
+			case "divide":
+				for(var h = 0 ; h < arr1.length; h++){
+					if (typeof arr1[h] === "number" ){
+						arrayPlaceholder.push(arr1[h] * arr2[h]);
+					}
+				}
+				return arrayPlaceholder;
+		}
+	},
+	arrOpSingle : function (arr1, singleNum, operator){
+		var arrayPlaceholder = [];
+		switch(operator){
+			case "add":
+				for(var i=0; i < arr1.length; i++){
+					if (typeof arr1[i] === "number" ){
+						arrayPlaceholder.push(arr1[i] + singleNum);
+					}
+				}
+				return arrayPlaceholder;
+			case "sbutract":
+				for(var j=0; j < arr1.length; j++){
+					if (typeof arr1[j] === "number" ){
+						arrayPlaceholder.push(arr1[j] - singleNum);
+					}
+				}
+				return arrayPlaceholder;
+			case "multiply":
+				for(var k=0; k < arr1.length; k++){
+					if (typeof arr1[k] === "number" ){
+						arrayPlaceholder.push(arr1[k] * singleNum);
+					}
+				}
+				return arrayPlaceholder;
+			case "divide":
+				for(var h = 0 ; h < arr1.length; h++){
+					if (typeof arr1[h] === "number" ){
+						arrayPlaceholder.push(arr1[h] * singleNum);
+					}
+				}
+				return arrayPlaceholder;
+		}
 	}
-	return sum;
 };
 
-var headCountTable = function (obj, employeesObj) {
 
-	var ArrayOfRowsBeforeBonus = [];
+var x = xlFactory.form2Table(arrayOfForms);
+
+
+var headCountTable = function (obj) {
+
 	var renderArrayOfRows = [];
 
-	// this will be a row of month i
+	xlFactory.spreadElements(renderArrayOfRows, obj, "role", "salary");
+	var monthlies = xlFactory.sumMonthlies(renderArrayOfRows, obj, "role", "salary");
 
-	// these will be employee rows
-	for(var i = 0; i < obj.role.length; i++){
-		var onerow =[];
+	var bonusPerc = 0.05;
+	var bonuses = xlFactory.arrOpSingle(monthlies, bonusPerc, "multiply");
+	bonuses.unshift("Bonuses");
 
-		//this will add the role to each row
-		onerow.push(obj.role[i]);
+	renderArrayOfRows.push(bonuses);
 
-		var yearlySalary = 0;
+	var totalMontliesPlusBonuses = xlFactory.arrOp(monthlies, bonuses, "add");
+	renderArrayOfRows.push(totalMontliesPlusBonuses);
 
-		//this will add the 12 monthly salaries to each row (growth can be added later)
-		for(var j = 0; j < 12; j++){
-			onerow.push(obj.salary[i]);
-			yearlySalary += obj.salary[i];
-		}
+	var tax = 0.11;
+	var taxesAndBenefits = xlFactory.arrOpSingle(totalMontliesPlusBonuses, tax, "multiply");
 
-		//this will add yearly salary to each row
-		onerow.push(yearlySalary);
+	totalMontliesPlusBonuses.unshift("totalMontliesPlusBonuses");
 
-		// this will push the row to the array of rows BEFORE BONUSes
-		ArrayOfRowsBeforeBonus.push(onerow)
+	taxesAndBenefits.unshift("Taxes and Benefits");
 
-		// this will push the row to the array of rows
-		renderArrayOfRows.push(onerow);
-	}
+	renderArrayOfRows.push(taxesAndBenefits);
 
-	// yearly salary for all employees
-	var yearlyAllEmployee = 0;
+	var totalMontliesPlusBonusesPlusTaxes = xlFactory.arrOp(totalMontliesPlusBonuses, taxesAndBenefits, "add");
 
-	// monthly expense of all salaries; BUT to Calc Bonuses
-	var monthlyTotalsToCalcBonus = [];
+	totalMontliesPlusBonusesPlusTaxes.unshift("Grand Total Monthlies")
 
+	renderArrayOfRows.push(totalMontliesPlusBonusesPlusTaxes);
 
-	// this will be a row monthly expense of all salaries
-	var monthlyEmployeeExpenseRow = [];
-	for(var k = 1; k < 13; k++){
-		yearlyAllEmployee += sumColumn(ArrayOfRowsBeforeBonus, k);
-		monthlyEmployeeExpenseRow.push(sumColumn(ArrayOfRowsBeforeBonus, k));
-		monthlyTotalsToCalcBonus.push(sumColumn(ArrayOfRowsBeforeBonus, k));
-	}
-
-	// this will add the yearly salary for all employees BEFORE BONUESes to the end of the row
-	monthlyEmployeeExpenseRow.push(yearlyAllEmployee);
-	renderArrayOfRows.push(monthlyEmployeeExpenseRow);
-
-	var calcBPerc = calcPercentExpenseOnRow(monthlyTotalsToCalcBonus, 0.05);
-
-	// this is yearly bonus expense
-	var yearlyBonusExpense = sumArray(calcBPerc);
-	calcBPerc.push(yearlyBonusExpense);
-
-	renderArrayOfRows.push(calcBPerc);
-
-	// applying Bonus percentages to monthly salaries
-	var applyBPerc = applyPercentExpenseOnRow(monthlyTotalsToCalcBonus, 0.05);
-	renderArrayOfRows.push(applyBPerc);
 
 	console.log(renderArrayOfRows);
+
 };
 
 headCountTable(x);

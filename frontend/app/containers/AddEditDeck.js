@@ -7,8 +7,8 @@ import { ButtonToolbar, Button, Modal } from 'react-bootstrap';
 const AddEditDeck = React.createClass({
   getInitialState() {
     return {
-      headOneShow: false,
-      headTwoShow: false,
+      empOneShow: false,
+      empTwoShow: false,
       employeeCount: null,
       employeeTaxBenefits: null,
       employeeName: null,
@@ -83,31 +83,62 @@ const AddEditDeck = React.createClass({
 
 
     render() {
-      // let headOneClose = () => this.setState({ headOneShow: false });
-      let headTwoClose = () => {
-        this.setState({ headTwoShow: false });
-        console.log("current state:",this.state);
+      // let empOneClose = () => this.setState({ empOneShow: false });
+      let empTwoClose = () => {
+        this.setState({ empTwoShow: false });
+        // console.log("current state:",this.state);
         this.saveEmployees()
       }
-      // let headOneOpen = () => this.setState({ headOneShow: true });
-      // let headTwoOpen = () => this.setState({ headTwoShow: true });
-      let saveAndCont = () => {
-        this.setState({ headOneShow: false, headTwoShow: true })
+      // let headOneOpen = () => this.setState({ empOneShow: true });
+      // let headTwoOpen = () => this.setState({ empTwoShow: true });
+      let onToEmployees = () => {
+        this.setState({ empOneShow: false, empTwoShow: true })
         // console.log("current state:",this.state)
+        // employeeForms();
       }
+      let nextEmployee = () => {
+        this.setState({ empTwoShow: false, empTwoShow: true })
+        // clear headcount 2
+        this.saveEmployees();
+      }
+      // let employeeForms = () => {
+      //   if (this.state.employeeCount) {
+      //       for (let i = 0; i < this.state.employeeCount; i++){
+      //         if (i < this.state.employeeCount - 1){
+      //           return  <Headcount2 show={this.state.empTwoShow} next={nextEmployee} onUpdate={this.handleFormState}/>
+      //         } else if (i == this.state.employeeCount - 1) {
+      //           return  <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
+      //         }
+      //       }
+      //     }
+      // }
+
       return (
         <ButtonToolbar>
-          <Button bsStyle="primary" onClick={()=>this.setState({ headOneShow: true })}>
+          <Button bsStyle="primary" onClick={()=>this.setState({ empOneShow: true })}>
             Employees
           </Button>
-
-          <Headcount show={this.state.headOneShow} next={saveAndCont} onUpdate={this.handleFormState}/>
-
-          <Headcount2 show={this.state.headTwoShow} onHide={headTwoClose} onUpdate={this.handleFormState}/>
+          <Headcount show={this.state.empOneShow} next={onToEmployees} onUpdate={this.handleFormState}/>
+          <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
         </ButtonToolbar>
       );
     }
 });
 
 export default AddEditDeck;
-// <Headcount show={this.state.headOneShow} next={saveAndCont} onEmployeeCount={this.handleEmployeeCount} onEmployeeTaxBenefits={this.handleEmployeeTaxBenefits}/>
+//
+// { if (this.state.employeeCount) {
+//     for (let i = 0; i < this.state.employeeCount; i++){
+//       if (i < this.state.employeeCount - 1){
+//         return  <Headcount2 show={this.state.empTwoShow} next={nextEmployee} onUpdate={this.handleFormState}/>
+//       } else if (i == this.state.employeeCount - 1) {
+//         return  <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
+//       } else {
+//         return <div></div>
+//       }
+//     }
+//   }
+// }
+
+          // <Headcount2 show={this.state.empTwoShow} onHide={empTwoClose} onUpdate={this.handleFormState}/>
+// <Headcount show={this.state.empOneShow} next={saveAndCont} onEmployeeCount={this.handleEmployeeCount} onEmployeeTaxBenefits={this.handleEmployeeTaxBenefits}/>

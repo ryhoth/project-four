@@ -44,7 +44,7 @@ class Headcount2 extends Component {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onHide}>Save and continue</Button>
+          <Button onClick={this.props.next}>Save and continue</Button>
         </Modal.Footer>
       </Modal>
     );

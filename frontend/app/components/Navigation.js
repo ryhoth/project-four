@@ -11,7 +11,7 @@ import ListDecks from '../containers/ListDecks';
 import DeckContent from '../containers/DeckContent';
 import AddEditDeck from '../containers/AddEditDeck';
 
-class Nav extends Component {
+class Navigation extends Component {
   render() {
     return (
       <div>
@@ -24,4 +24,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default Navigation;

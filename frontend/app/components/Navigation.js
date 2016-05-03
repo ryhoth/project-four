@@ -25,14 +25,20 @@ class NaviBar extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem eventKey={1}>Link1</NavItem>
-          <NavItem eventKey={2}>Link2</NavItem>
-          <NavItem eventKey={3}>Link3</NavItem>
-          <Link to={'/ListDecks'}>List Decks</Link>
-          <Link to={'/AddEditDeck'}>Add Deck</Link>
+          <Navbar.Brand>
+            <Link to={'/ListDecks'}>List Decks</Link>
+          </Navbar.Brand>
+          <Navbar.Brand>
+            <Link to={'/NewDeck'}>New Deck</Link>
+          </Navbar.Brand>
+          <Navbar.Brand>
+            <Link to={'/DeckContent'}>Deck Content</Link>
+          </Navbar.Brand>
         </Nav>
         <Nav pullRight>
-          <NavItem eventKey={1} href="#">About</NavItem>
+          <Navbar.Brand>
+            <Link to={'/About'}>About</Link>
+          </Navbar.Brand>
         </Nav>
       </Navbar>
     );

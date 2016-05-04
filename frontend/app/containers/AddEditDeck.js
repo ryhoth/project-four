@@ -8,10 +8,12 @@ import { ButtonToolbar, Button, Modal } from 'react-bootstrap';
 const AddEditDeck = React.createClass({
   getInitialState() {
     return {
-      empOneShow: false,
-      empTwoShow: false,
+      emp1Display: false,
+      emp2Display: false,
+
       employeeCount: null,
       employeeTaxBenefits: null,
+
       employeeName: null,
       employeePosition: null,
       employeeSalary: null,
@@ -22,6 +24,7 @@ const AddEditDeck = React.createClass({
 
 // swtich statement to grave the values from the form and set the state in this container
   handleFormState: function (e) {
+    // if statement with e.target.key?
     switch (e.target.name) {
       case "employeeCount":
         this.setState({
@@ -68,8 +71,9 @@ const AddEditDeck = React.createClass({
     };
   },
 
-  employeeInfo: [],
 
+// this saves the employee info and pushes it into employeeInfo array
+  employeeInfo: [],
   saveEmployees: function () {
     this.employeeInfo.push({
       employeeName: this.state.employeeName,
@@ -81,63 +85,43 @@ const AddEditDeck = React.createClass({
     console.log("employeeInfo: ",this.employeeInfo);
   },
 
-  array: [],
+  employeeQuestFormArray: [],
 
 
     render() {
-      // let empOneClose = () => this.setState({ empOneShow: false });
-      let empTwoClose = () => {
-        this.setState({ empTwoShow: false });
-        // console.log("current state:",this.state);
-        this.saveEmployees()
-      }
-      // let headOneOpen = () => this.setState({ empOneShow: true });
-      // let headTwoOpen = () => this.setState({ empTwoShow: true });
+
+      // this moves on from employee questionair 1 -> 2 and calls fxn that populates the questionair form with employee count
       let onToEmployees = () => {
-        this.setState({ empOneShow: false, empTwoShow: true })
-        // console.log("current state:",this.state)
+        this.setState({ emp1Display: false, emp2Display: true })
         employeeForms();
       }
-      let nextEmployee = () => {
-        this.setState({ empTwoShow: false, empTwoShow: true })
-        // clear headcount 2
-        this.saveEmployees();
+      //this closes out questionaire and saves the data from employee questionaire into an array
+      let empTwoClose = () => {
+        this.setState({ emp2Display: false });
+        this.saveEmployees()
       }
-
+      //this populates how many forms need to be in employee questionair
       let employeeForms = () => {
         if (this.state.employeeCount) {
             for (let i = 0; i < this.state.employeeCount; i++){
-                this.array.push(<Headcount3 key={i} count={i + 1} />)
+                this.employeeQuestFormArray.push(<Headcount3 key={i} count={i + 1} />)
             }
           }
       }
 
       return (
-        <ButtonToolbar>
-          <Button bsStyle="primary" onClick={()=>this.setState({ empOneShow: true })}>
-            Employees
-          </Button>
-          <Headcount show={this.state.empOneShow} next={onToEmployees} onUpdate={this.handleFormState}/>
-          <Headcount2 show={this.state.empTwoShow} travis={this.array} employeeCount={this.state.employeeCount} next={empTwoClose} onUpdate={this.handleFormState}/>
-        </ButtonToolbar>
+        <div>
+          <ButtonToolbar>
+            <Button bsStyle="primary" onClick={()=>this.setState({ emp1Display: true })}>
+              Employees
+            </Button>
+          </ButtonToolbar>
+          <Headcount show={this.state.emp1Display} next={onToEmployees} onUpdate={this.handleFormState}/>
+          <Headcount2 show={this.state.emp2Display} empQuestForms={this.employeeQuestFormArray} employeeCount={this.state.employeeCount} next={empTwoClose} onUpdate={this.handleFormState}/>
+
+        </div>
       );
     }
 });
 
 export default AddEditDeck;
-//
-// { if (this.state.employeeCount) {
-//     for (let i = 0; i < this.state.employeeCount; i++){
-//       if (i < this.state.employeeCount - 1){
-//         return  <Headcount2 show={this.state.empTwoShow} next={nextEmployee} onUpdate={this.handleFormState}/>
-//       } else if (i == this.state.employeeCount - 1) {
-//         return  <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
-//       } else {
-//         return <div></div>
-//       }
-//     }
-//   }
-// }
-
-          // <Headcount2 show={this.state.empTwoShow} onHide={empTwoClose} onUpdate={this.handleFormState}/>
-// <Headcount show={this.state.empOneShow} next={saveAndCont} onEmployeeCount={this.handleEmployeeCount} onEmployeeTaxBenefits={this.handleEmployeeTaxBenefits}/>

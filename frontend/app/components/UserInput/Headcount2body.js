@@ -37,7 +37,7 @@ const Headcount3 = React.createClass ({
                   <InputGroup.Addon>%</InputGroup.Addon>
                 </InputGroup>
               </FormGroup>
-              <br/><hr/>
+              <hr/><br/>
             </form>
     );
   }

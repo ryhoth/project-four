@@ -14,14 +14,8 @@ import Welcome from '../components/Welcome';
 
 
 
-// Note: In your topmost route, you need to pass a component (this.props.children)
-// On the home page, it's the Login component; on the /products page, it's the Products component
-// <Route path="Main/" component={Main}>
-//   <Route path="SignIn" component={SignIn}/>
-//   <Route path="SignUp" component={SignUp}/>
-//   <Route path="ListDecks" component={ListDecks}/>
-//   <Route path="DeckContent" component={DeckContent}/>
-//   <Route path="AddEditDeck" component={AddEditDeck}/>
+
+
 
 const Routes = (
   <Router history={browserHistory}>

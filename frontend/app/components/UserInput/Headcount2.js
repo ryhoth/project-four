@@ -16,7 +16,7 @@ const Headcount2 = React.createClass({
           {this.props.empQuestForms}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.next}>Save and continue</Button>
+          <Button onClick={this.props.next}>Save</Button>
         </Modal.Footer>
       </Modal>
     );

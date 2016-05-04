@@ -9,11 +9,14 @@ class ListDecks extends Component {
     return (
       <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Marketing</Modal.Title>
+          <Modal.Title id="contained-modal-title-lg">Revenue</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
-
+            <FormGroup controlId="formControlsText">
+              <ControlLabel>What is the medium in which your business will profit from {this.props.revenueEvent}?</ControlLabel>
+              <FormControl name="revenueMedium" type="text" placeholder="Field, website, software..." onChange={this.props.onUpdate} />
+            </FormGroup>
           </form>
         </Modal.Body>
         <Modal.Footer>

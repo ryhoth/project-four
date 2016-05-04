@@ -24,7 +24,7 @@ class ListDecks extends Component {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.next}>Save and continue</Button>
+          <Button onClick={this.props.next}>Save</Button>
         </Modal.Footer>
       </Modal>
     );

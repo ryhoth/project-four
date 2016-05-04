@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import Headcount from '../components/UserInput/Headcount'
-import Headcount2 from '../components/UserInput/Headcount2'
-import Headcount3 from '../components/UserInput/Headcount2body'
-import Budget1 from '../components/UserInput/Budget1'
-import Budget2 from '../components/UserInput/Budget2'
-import Budget3 from '../components/UserInput/Budget3'
-import Budget4 from '../components/UserInput/Budget4'
+import Headcount from '../components/UserInput/Headcount';
+import Headcount2 from '../components/UserInput/Headcount2';
+import Headcount3 from '../components/UserInput/Headcount2body';
+import Budget1 from '../components/UserInput/Budget1';
+import Budget2 from '../components/UserInput/Budget2';
+import Budget3 from '../components/UserInput/Budget3';
+import Budget4 from '../components/UserInput/Budget4';
+import Revenue1 from '../components/UserInput/Revenue1';
+import Revenue2 from '../components/UserInput/Revenue2';
+import Revenue3 from '../components/UserInput/Revenue3';
+import Revenue4 from '../components/UserInput/Revenue4';
+import Revenue5 from '../components/UserInput/Revenue5';
 
 
 import { ButtonToolbar, Button, Modal } from 'react-bootstrap';
@@ -19,6 +24,11 @@ const AddEditDeck = React.createClass({
       bud2Display: false,
       bud3Display: false,
       bud4Display: false,
+      rev1Display: false,
+      rev2Display: false,
+      rev3Display: false,
+      rev4Display: false,
+      rev5Display: false,
 
       employeeCount: null,
       employeeTaxBenefits: null,
@@ -49,10 +59,13 @@ const AddEditDeck = React.createClass({
       insurance: null,
       pettyCash: null,
 
-      capEx: null
+      capEx: null,
 
-
-
+      unitOfBusiness: null,
+      revenueEvent: null,
+      revenueMedium: null,
+      profitProbability: null,
+      moneyPerB: null
 
     };
   },
@@ -192,6 +205,31 @@ const AddEditDeck = React.createClass({
           capEx: e.target.value
         })
         break;
+      case "unitOfBusiness":
+        this.setState({
+          unitOfBusiness: e.target.value
+        })
+        break;
+      case "revenueEvent":
+        this.setState({
+          revenueEvent: e.target.value
+        })
+        break;
+      case "revenueMedium":
+        this.setState({
+          revenueMedium: e.target.value
+        })
+        break;
+      case "profitProbability":
+        this.setState({
+          profitProbability: e.target.value
+        })
+        break;
+      case "moneyPerB":
+        this.setState({
+          moneyPerB: e.target.value
+        })
+        break;
     };
   },
 
@@ -209,8 +247,8 @@ const AddEditDeck = React.createClass({
     console.log("employeeInfo: ", this.employeeInfo);
   },
 
+// this is an array where number of forms to be rendered into Headcount2 will be pushed into
   employeeQuestFormArray: [],
-
 
     render() {
 
@@ -247,6 +285,23 @@ const AddEditDeck = React.createClass({
       let budgetClose = () => {
         this.setState({ bud4Display: false });
       }
+      let onToRevenue2 = () => {
+        this.setState({ rev1Display: false, rev2Display: true })
+      }
+      //this will move onto the third budget questionair *** one to three for now but change that
+      let onToRevenue3 = () => {
+        this.setState({ rev2Display: false, rev3Display: true })
+      }
+      let onToRevenue4 = () => {
+        this.setState({ rev3Display: false, rev4Display: true })
+      }
+      let onToRevenue5 = () => {
+        this.setState({ rev4Display: false, rev5Display: true })
+      }
+      // closes budget four and saves all the state into an array with a fxn
+      let revenueClose = () => {
+        this.setState({ rev5Display: false });
+      }
 
       return (
         <div>
@@ -257,12 +312,20 @@ const AddEditDeck = React.createClass({
             <Button bsStyle="primary" onClick={()=>this.setState({ bud1Display: true })}>
               Budget
             </Button>
+            <Button bsStyle="primary" onClick={()=>this.setState({ rev1Display: true })}>
+              Revenue
+            </Button>
           </ButtonToolbar>
           <Headcount show={this.state.emp1Display} next={onToEmployees} onUpdate={this.handleFormState}/>
           <Headcount2 show={this.state.emp2Display} next={empTwoClose} empQuestForms={this.employeeQuestFormArray} />
           <Budget1 show={this.state.bud1Display} next={onToBudget3} onUpdate={this.handleFormState}/>
           <Budget3 show={this.state.bud3Display} next={onToBudget4} onUpdate={this.handleFormState}/>
           <Budget4 show={this.state.bud4Display} next={budgetClose} onUpdate={this.handleFormState}/>
+          <Revenue1 show={this.state.rev1Display} next={onToRevenue2} onUpdate={this.handleFormState}/>
+          <Revenue2 show={this.state.rev2Display} next={onToRevenue3} onUpdate={this.handleFormState} unitOfBusiness={this.state.unitOfBusiness} />
+          <Revenue3 show={this.state.rev3Display} next={onToRevenue4} onUpdate={this.handleFormState} revenueEvent={this.state.revenueEvent} />
+          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} unitOfBusiness={this.state.unitOfBusiness} revenueEvent={this.state.revenueEvent} revenueMedium={this.state.revenueMedium} />
+          <Revenue5 show={this.state.rev5Display} next={revenueClose} onUpdate={this.handleFormState} revenueEvent={this.state.revenueEvent} />
         </div>
       );
     }

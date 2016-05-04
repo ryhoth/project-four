@@ -15,9 +15,12 @@ const AddEditDeck = React.createClass({
       employeePosition: null,
       employeeSalary: null,
       employeeBonus: null,
-      employeeEquity: null
+      employeeEquity: null,
+      employees: []
     };
   },
+
+  fuckingArray : [],
 
 // swtich statement to grave the values from the form and set the state in this container
   handleFormState: function (e) {
@@ -66,9 +69,10 @@ const AddEditDeck = React.createClass({
         break;
     };
   },
-
   employeeInfo: [],
 
+
+  // ryan gotta fix this because we wanna loop and do all the forms, not one by one
   saveEmployees: function () {
     this.employeeInfo.push({
       employeeName: this.state.employeeName,
@@ -77,41 +81,29 @@ const AddEditDeck = React.createClass({
       employeeBonus: this.state.employeeBonus,
       employeeEquity: this.state.employeeEquity
     });
-    console.log("employeeInfo: ",this.employeeInfo);
+    console.log("employeeInfo: ", this.employeeInfo);
   },
 
-
-
     render() {
-      // let empOneClose = () => this.setState({ empOneShow: false });
-      let empTwoClose = () => {
-        this.setState({ empTwoShow: false });
-        // console.log("current state:",this.state);
-        this.saveEmployees()
-      }
-      // let headOneOpen = () => this.setState({ empOneShow: true });
-      // let headTwoOpen = () => this.setState({ empTwoShow: true });
+
       let onToEmployees = () => {
-        this.setState({ empOneShow: false, empTwoShow: true })
-        // console.log("current state:",this.state)
-        // employeeForms();
+        this.setState({ empOneShow: false})
+        employeeForms();
       }
+
+      let employeeForms = () => {
+        console.log("running employeeform fxn");
+        if (this.state.employeeCount) {
+            for (let i = 0; i < this.state.employeeCount; i++){
+              this.fuckingArray.push(<Headcount2 key={i} employeeCount={this.state.employeeCount} next={nextEmployee} onUpdate={this.handleFormState}/>)
+            }
+        }
+        console.log("employeeForms end")
+      }
+
       let nextEmployee = () => {
-        this.setState({ empTwoShow: false, empTwoShow: true })
-        // clear headcount 2
         this.saveEmployees();
       }
-      // let employeeForms = () => {
-      //   if (this.state.employeeCount) {
-      //       for (let i = 0; i < this.state.employeeCount; i++){
-      //         if (i < this.state.employeeCount - 1){
-      //           return  <Headcount2 show={this.state.empTwoShow} next={nextEmployee} onUpdate={this.handleFormState}/>
-      //         } else if (i == this.state.employeeCount - 1) {
-      //           return  <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
-      //         }
-      //       }
-      //     }
-      // }
 
       return (
         <ButtonToolbar>
@@ -119,26 +111,10 @@ const AddEditDeck = React.createClass({
             Employees
           </Button>
           <Headcount show={this.state.empOneShow} next={onToEmployees} onUpdate={this.handleFormState}/>
-          <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
+          {this.fuckingArray}
         </ButtonToolbar>
       );
     }
 });
 
 export default AddEditDeck;
-//
-// { if (this.state.employeeCount) {
-//     for (let i = 0; i < this.state.employeeCount; i++){
-//       if (i < this.state.employeeCount - 1){
-//         return  <Headcount2 show={this.state.empTwoShow} next={nextEmployee} onUpdate={this.handleFormState}/>
-//       } else if (i == this.state.employeeCount - 1) {
-//         return  <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
-//       } else {
-//         return <div></div>
-//       }
-//     }
-//   }
-// }
-
-          // <Headcount2 show={this.state.empTwoShow} onHide={empTwoClose} onUpdate={this.handleFormState}/>
-// <Headcount show={this.state.empOneShow} next={saveAndCont} onEmployeeCount={this.handleEmployeeCount} onEmployeeTaxBenefits={this.handleEmployeeTaxBenefits}/>

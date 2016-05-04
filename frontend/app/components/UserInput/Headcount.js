@@ -8,7 +8,7 @@ const Headcount = React.createClass({
     return (
       <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
+          <Modal.Title id="contained-modal-title-lg">Employee Questionnaire</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>

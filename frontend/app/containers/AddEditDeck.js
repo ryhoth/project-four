@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Headcount from '../components/UserInput/Headcount'
 import Headcount2 from '../components/UserInput/Headcount2'
+import Headcount3 from '../components/UserInput/Headcount2body'
 
 import { ButtonToolbar, Button, Modal } from 'react-bootstrap';
 
@@ -80,6 +81,7 @@ const AddEditDeck = React.createClass({
     console.log("employeeInfo: ",this.employeeInfo);
   },
 
+  array: [],
 
 
     render() {
@@ -94,24 +96,21 @@ const AddEditDeck = React.createClass({
       let onToEmployees = () => {
         this.setState({ empOneShow: false, empTwoShow: true })
         // console.log("current state:",this.state)
-        // employeeForms();
+        employeeForms();
       }
       let nextEmployee = () => {
         this.setState({ empTwoShow: false, empTwoShow: true })
         // clear headcount 2
         this.saveEmployees();
       }
-      // let employeeForms = () => {
-      //   if (this.state.employeeCount) {
-      //       for (let i = 0; i < this.state.employeeCount; i++){
-      //         if (i < this.state.employeeCount - 1){
-      //           return  <Headcount2 show={this.state.empTwoShow} next={nextEmployee} onUpdate={this.handleFormState}/>
-      //         } else if (i == this.state.employeeCount - 1) {
-      //           return  <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
-      //         }
-      //       }
-      //     }
-      // }
+
+      let employeeForms = () => {
+        if (this.state.employeeCount) {
+            for (let i = 0; i < this.state.employeeCount; i++){
+                this.array.push(<Headcount3 key={i} count={i + 1} />)
+            }
+          }
+      }
 
       return (
         <ButtonToolbar>
@@ -119,7 +118,7 @@ const AddEditDeck = React.createClass({
             Employees
           </Button>
           <Headcount show={this.state.empOneShow} next={onToEmployees} onUpdate={this.handleFormState}/>
-          <Headcount2 show={this.state.empTwoShow} next={empTwoClose} onUpdate={this.handleFormState}/>
+          <Headcount2 show={this.state.empTwoShow} travis={this.array} employeeCount={this.state.employeeCount} next={empTwoClose} onUpdate={this.handleFormState}/>
         </ButtonToolbar>
       );
     }

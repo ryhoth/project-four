@@ -27,6 +27,7 @@ const AddEditDeck = React.createClass({
 
 // swtich statement to grave the values from the form and set the state in this container
   handleFormState: function (e) {
+    console.log(e.target)
     // if statement with e.target.key?
     switch (e.target.name) {
       case "employeeCount":
@@ -107,7 +108,7 @@ const AddEditDeck = React.createClass({
       let employeeForms = () => {
         if (this.state.employeeCount) {
             for (let i = 0; i < this.state.employeeCount; i++){
-                this.employeeQuestFormArray.push(<Headcount3 key={i} count={i + 1} />)
+                this.employeeQuestFormArray.push(<Headcount3 key={i} count={i + 1} onUpdate={this.handleFormState} />)
             }
           }
       }
@@ -120,7 +121,7 @@ const AddEditDeck = React.createClass({
             </Button>
           </ButtonToolbar>
           <Headcount show={this.state.emp1Display} next={onToEmployees} onUpdate={this.handleFormState}/>
-          <Headcount2 show={this.state.emp2Display} empQuestForms={this.employeeQuestFormArray} employeeCount={this.state.employeeCount} next={empTwoClose} onUpdate={this.handleFormState}/>
+          <Headcount2 show={this.state.emp2Display} empQuestForms={this.employeeQuestFormArray} employeeCount={this.state.employeeCount} next={empTwoClose} />
 
         </div>
       );

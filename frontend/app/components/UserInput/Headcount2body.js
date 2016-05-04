@@ -20,8 +20,8 @@ const Headcount3 = React.createClass ({
                 <ControlLabel>Monthly Salary</ControlLabel>
                 <InputGroup>
                   <InputGroup.Addon>$</InputGroup.Addon>
-                    <FormControl type="text" name="employeeSalary" placeholder="Enter the employee's monthly salary in dollars" onChange={this.props.onUpdate} />
-                  </InputGroup>
+                  <FormControl type="text" name="employeeSalary" placeholder="Enter the employee's monthly salary in dollars" onChange={this.props.onUpdate} />
+                </InputGroup>
               </FormGroup>
               <FormGroup controlId="formControlsText">
                 <ControlLabel>Bonus</ControlLabel>

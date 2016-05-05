@@ -42,7 +42,7 @@ var budgetData = [
 	var revData = {
 		unitA:{
 			name:"A",
-			projections:[0,1,2,3,4,5]
+			projections:[0,1,2,3,4,12]
 		},
 		eventB:{
 			name:"B",
@@ -50,14 +50,14 @@ var budgetData = [
 		},
 		mediumC:{
 			name: "C",
-			projections:[1,1,2,3,4,4]
+			projections:[]
 		},
 		probOfB:{
-					name:"P(C)",
+					name:"P(B)",
 					projections:[1,1,2,3,4,4]
 				},
-		probOfC: {
-					name:"P(B)",
+		percOfC: {
+					name:"P(C)",
 					projections:[1,1,2,3,4,4]
 				},
 		dollarPerPofB:{

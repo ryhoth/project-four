@@ -14,11 +14,6 @@ import Revenue5 from '../components/UserInput/Revenue5';
 import Revenue6 from '../components/UserInput/Revenue6';
 import Revenue7 from '../components/UserInput/Revenue7';
 import Revenue8 from '../components/UserInput/Revenue8';
-import Revenue9 from '../components/UserInput/Revenue9';
-import Revenue10 from '../components/UserInput/Revenue10';
-import Revenue11 from '../components/UserInput/Revenue11';
-import Revenue12 from '../components/UserInput/Revenue12';
-import Revenue13 from '../components/UserInput/Revenue13';
 
 
 import { ButtonToolbar, Button, Modal } from 'react-bootstrap';
@@ -39,6 +34,8 @@ const AddEditDeck = React.createClass({
       rev5Display: false,
       rev6Display: false,
       rev7Display: false,
+      rev8Display: false,
+
 
       employeeCount: null,
       employeeTaxBenefits: null,
@@ -74,8 +71,6 @@ const AddEditDeck = React.createClass({
       unitA: null,
       eventB: null,
       mediumC: null,
-      probOfB: null,
-      percOfC: null,
       dollarPerPofB: null,
       dollarPerPofC: null,
 
@@ -402,23 +397,26 @@ const AddEditDeck = React.createClass({
       let onToRevenue8 = () => {
         this.setState({ rev7Display: false, rev8Display: true })
       }
-      let onToRevenue9 = () => {
-        this.setState({ rev8Display: false, rev9Display: true })
-      }
-      let onToRevenue10 = () => {
-        this.setState({ rev9Display: false, rev10Display: true })
-      }
-      let onToRevenue11 = () => {
-        this.setState({ rev10Display: false, rev11Display: true })
-      }
-      let onToRevenue12 = () => {
-        this.setState({ rev11Display: false, rev12Display: true })
-      }
-      let onToRevenue13 = () => {
-        this.setState({ rev12Display: false, rev13Display: true })
-      }
       let revenueClose = () => {
-        this.setState({ rev13Display: false });
+        this.setState({ rev8Display: false });
+      }
+      let closeForm = () => {
+        this.setState({
+        emp1Display: false,
+        emp2Display: false,
+        bud1Display: false,
+        bud2Display: false,
+        bud3Display: false,
+        bud4Display: false,
+        rev1Display: false,
+        rev2Display: false,
+        rev3Display: false,
+        rev4Display: false,
+        rev5Display: false,
+        rev6Display: false,
+        rev7Display: false,
+        rev8Display: false,
+      });
       }
 
       return (
@@ -434,7 +432,7 @@ const AddEditDeck = React.createClass({
               Revenue
             </Button>
           </ButtonToolbar>
-          <Headcount show={this.state.emp1Display} next={onToEmployees} onUpdate={this.handleFormState}/>
+          <Headcount show={this.state.emp1Display} next={onToEmployees} onUpdate={this.handleFormState} />
           <Headcount2 show={this.state.emp2Display} next={empTwoClose} empQuestForms={this.employeeQuestFormArray} />
           <Budget1 show={this.state.bud1Display} next={onToBudget3} onUpdate={this.handleFormState}/>
           <Budget3 show={this.state.bud3Display} next={onToBudget4} onUpdate={this.handleFormState}/>
@@ -442,16 +440,11 @@ const AddEditDeck = React.createClass({
           <Revenue1 show={this.state.rev1Display} next={onToRevenue2} onUpdate={this.handleFormState}/>
           <Revenue2 show={this.state.rev2Display} next={onToRevenue3} onUpdate={this.handleFormState} unitA={this.state.unitA}/>
           <Revenue3 show={this.state.rev3Display} next={onToRevenue4} onUpdate={this.handleFormState} unitA={this.state.unitA}/>
-          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
+          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} unitA={this.state.unitA} eventB={this.state.eventB}/>
           <Revenue5 show={this.state.rev5Display} next={onToRevenue6} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
           <Revenue6 show={this.state.rev6Display} next={onToRevenue7} onUpdate={this.handleFormState} unitA={this.state.unitA} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
-          <Revenue7 show={this.state.rev7Display} next={onToRevenue8} onUpdate={this.handleFormState}/>
-          <Revenue8 show={this.state.rev8Display} next={onToRevenue9} onUpdate={this.handleFormState} eventB={this.state.eventB} mediumC={this.state.mediumC} />
-          <Revenue9 show={this.state.rev9Display} next={onToRevenue10} onUpdate={this.handleFormState}/>
-          <Revenue10 show={this.state.rev10Display} next={onToRevenue11} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
-          <Revenue11 show={this.state.rev11Display} next={onToRevenue12} onUpdate={this.handleFormState}/>
-          <Revenue12 show={this.state.rev12Display} next={onToRevenue13} onUpdate={this.handleFormState}/>
-          <Revenue13 show={this.state.rev13Display} next={revenueClose} onUpdate={this.handleFormState}/>
+          <Revenue7 show={this.state.rev7Display} next={onToRevenue8} onUpdate={this.handleFormState} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
+          <Revenue8 show={this.state.rev8Display} next={revenueClose} onUpdate={this.handleFormState} eventB={this.state.eventB} />
         </div>
       );
     }

@@ -25,10 +25,13 @@ const Routes = (
       <Route path="About" component={About} />
       <Route path="SignIn" component={SignIn} />
       <Route path="SignUp" component={SignUp} />
-      <Route path="ListDecks" component={ListDecks} />
-      <Route path="DeckContent" component={DeckContent} />
-      <Route path="NewDeck" component={AddEditDeck} />
-      <Route path="EditDeck" component={AddEditDeck} />
+      <Route path="ListDecks" component={ListDecks} >
+        <Route path="NewDeck" component={AddEditDeck} />
+        <Route path="EditDeck" component={AddEditDeck} />
+        <Route path="DeckContent" component={DeckContent} />
+      </Route>
+
+
     </Route>
   </Router>
 );

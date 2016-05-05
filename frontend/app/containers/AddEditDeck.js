@@ -16,7 +16,8 @@ import Revenue7 from '../components/UserInput/Revenue7';
 import Revenue8 from '../components/UserInput/Revenue8';
 
 
-import { ButtonToolbar, Button, Modal } from 'react-bootstrap';
+
+import { ButtonToolbar, Button, Modal, Grid } from 'react-bootstrap';
 
 const AddEditDeck = React.createClass({
   getInitialState() {
@@ -396,6 +397,15 @@ const AddEditDeck = React.createClass({
   console.log("revData", this.revData);
   },
 
+  //fxn that sends all data to math.js
+  sendToMath: function () {
+
+    // if (this.employeeData && this.budgetData && this.revData) {
+      this.props.grabEmployee(this.employeeData);
+      this.props.grabBudget(this.budgetData);
+      this.props.grabRevenue(this.revData);
+    // }
+  },
 
 // this is an array where number of forms to be rendered into Headcount2 will be pushed into
   employeeQuestFormArray: [],
@@ -486,7 +496,7 @@ const AddEditDeck = React.createClass({
       }
 
       return (
-        <div>
+        <Grid fluid>
           <ButtonToolbar>
             <Button bsStyle="primary" onClick={()=>this.setState({ emp1Display: true })}>
               Employees
@@ -496,6 +506,9 @@ const AddEditDeck = React.createClass({
             </Button>
             <Button bsStyle="primary" onClick={()=>this.setState({ rev1Display: true })}>
               Revenue
+            </Button>
+            <Button bsStyle="success" onClick={this.sendToMath}>
+              Submit
             </Button>
           </ButtonToolbar>
           <Headcount show={this.state.emp1Display} next={onToEmployees} onUpdate={this.handleFormState} />
@@ -511,7 +524,7 @@ const AddEditDeck = React.createClass({
           <Revenue6 show={this.state.rev6Display} next={onToRevenue7} onUpdate={this.handleFormState} unitA={this.state.unitA} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
           <Revenue7 show={this.state.rev7Display} next={onToRevenue8} onUpdate={this.handleFormState} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
           <Revenue8 show={this.state.rev8Display} next={revenueClose} onUpdate={this.handleFormState} eventB={this.state.eventB} />
-        </div>
+        </Grid>
       );
     }
 });

@@ -3,24 +3,24 @@ import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'rea
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 
-import { Jumbotron, Button, PageHeader } from 'react-bootstrap';
+import { Jumbotron, Button, PageHeader, Grid } from 'react-bootstrap';
 
 
 
 class Welcome extends Component {
   render() {
     return (
-      <div>
+      <Grid fluid>
         <Jumbotron>
           <PageHeader>Welcome to Fox Deck</PageHeader>
           <p>A quick and simple way for entrepreneurs to generate financial projections for their business idea.</p>
-          <p><Button bsStyle="primary">Learn more</Button></p>
+          <p><Button bsStyle="info"><Link to={'/About'}>Learn more</Link></Button></p>
         </Jumbotron><br/>
         <Link to={'/SignUp'}>SignUp</Link><br/>
         <SignUpForm /><br/><br/><hr/>
         <Link to={'/SignIn'}>SignIn</Link><br/>
         <SignInForm /><br/><br/><hr/>
-      </div>
+      </Grid>
     );
   }
 }

@@ -18,7 +18,7 @@ import { Nav, Navbar, NavItem, NavDropdown, DropdownButton} from 'react-bootstra
 class NaviBar extends Component {
   render() {
     return (
-      <Navbar>
+      <Navbar fluid >
         <Navbar.Header>
           <Navbar.Brand>
             <Link to={'/'}>Fox Deck</Link>
@@ -29,10 +29,10 @@ class NaviBar extends Component {
             <Link to={'/ListDecks'}>List Decks</Link>
           </Navbar.Brand>
           <Navbar.Brand>
-            <Link to={'/NewDeck'}>New Deck</Link>
+            <Link to={'/ListDecks/NewDeck'}>New Deck</Link>
           </Navbar.Brand>
           <Navbar.Brand>
-            <Link to={'/DeckContent'}>Deck Content</Link>
+            <Link to={'/ListDecks/DeckContent'}>Deck Content</Link>
           </Navbar.Brand>
         </Nav>
         <Nav pullRight>

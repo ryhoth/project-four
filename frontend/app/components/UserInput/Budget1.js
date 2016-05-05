@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, FormGroup, ControlLabel, FormControl, Button, InputGroup } from 'react-bootstrap';
 
-class ListDecks extends Component {
+class Budget1 extends Component {
 
   render() {
     return (
@@ -73,7 +73,7 @@ class ListDecks extends Component {
   }
 }
 
-export default ListDecks;
+export default Budget1;
 
 // Budget:
 // Consultants: How do you expect to spend per year on {finance, legal, tech, content & editorial, design, marketing, other}?

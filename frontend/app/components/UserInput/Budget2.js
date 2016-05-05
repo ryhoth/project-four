@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, FormGroup, ControlLabel, FormControl, Button, InputGroup } from 'react-bootstrap';
 
-class ListDecks extends Component {
+class Budget2 extends Component {
 
 //marketing questions
   render() {
@@ -24,4 +24,4 @@ class ListDecks extends Component {
   }
 }
 
-export default ListDecks;
+export default Budget2;

@@ -11,6 +11,14 @@ import Revenue2 from '../components/UserInput/Revenue2';
 import Revenue3 from '../components/UserInput/Revenue3';
 import Revenue4 from '../components/UserInput/Revenue4';
 import Revenue5 from '../components/UserInput/Revenue5';
+import Revenue6 from '../components/UserInput/Revenue6';
+import Revenue7 from '../components/UserInput/Revenue7';
+import Revenue8 from '../components/UserInput/Revenue8';
+import Revenue9 from '../components/UserInput/Revenue9';
+import Revenue10 from '../components/UserInput/Revenue10';
+import Revenue11 from '../components/UserInput/Revenue11';
+import Revenue12 from '../components/UserInput/Revenue12';
+import Revenue13 from '../components/UserInput/Revenue13';
 
 
 import { ButtonToolbar, Button, Modal } from 'react-bootstrap';
@@ -29,6 +37,8 @@ const AddEditDeck = React.createClass({
       rev3Display: false,
       rev4Display: false,
       rev5Display: false,
+      rev6Display: false,
+      rev7Display: false,
 
       employeeCount: null,
       employeeTaxBenefits: null,
@@ -61,11 +71,26 @@ const AddEditDeck = React.createClass({
 
       capEx: null,
 
-      unitOfBusiness: null,
-      revenueEvent: null,
-      revenueMedium: null,
-      profitProbability: null,
-      moneyPerB: null
+      unitA: null,
+      eventB: null,
+      mediumC: null,
+      probOfB: null,
+      percOfC: null,
+      dollarPerPofB: null,
+      dollarPerPofC: null,
+
+      jan: null,
+      feb: null,
+      mar: null,
+      apr: null,
+      may: null,
+      jun: null,
+      jul: null,
+      aug: null,
+      sept: null,
+      oct: null,
+      nov: null,
+      dec: null
 
     };
   },
@@ -205,29 +230,99 @@ const AddEditDeck = React.createClass({
           capEx: e.target.value
         })
         break;
-      case "unitOfBusiness":
+      case "unitA":
         this.setState({
-          unitOfBusiness: e.target.value
+          unitA: e.target.value
         })
         break;
-      case "revenueEvent":
+      case "eventB":
         this.setState({
-          revenueEvent: e.target.value
+          eventB: e.target.value
         })
         break;
-      case "revenueMedium":
+      case "mediumC":
         this.setState({
-          revenueMedium: e.target.value
+          mediumC: e.target.value
         })
         break;
-      case "profitProbability":
+      case "probOfB":
         this.setState({
-          profitProbability: e.target.value
+          probOfB: e.target.value
         })
         break;
-      case "moneyPerB":
+      case "percOfC":
         this.setState({
-          moneyPerB: e.target.value
+          percOfC: e.target.value
+        })
+        break;
+      case "dollarPerPofB":
+        this.setState({
+          dollarPerPofB: e.target.value
+        })
+        break;
+      case "dollarPerPofC":
+        this.setState({
+          dollarPerPofC: e.target.value
+        })
+        break;
+      case "jan":
+        this.setState({
+          jan: e.target.value
+        })
+        break;
+      case "feb":
+        this.setState({
+          feb: e.target.value
+        })
+        break;
+      case "mar":
+        this.setState({
+          mar: e.target.value
+        })
+        break;
+      case "apr":
+        this.setState({
+          apr: e.target.value
+        })
+        break;
+      case "may":
+        this.setState({
+          may: e.target.value
+        })
+        break;
+      case "jun":
+        this.setState({
+          jun: e.target.value
+        })
+        break;
+      case "jul":
+        this.setState({
+          jul: e.target.value
+        })
+        break;
+      case "aug":
+        this.setState({
+          aug: e.target.value
+        })
+        break;
+      case "sept":
+        this.setState({
+          sept: e.target.value
+        })
+        break;
+      case "oct":
+        this.setState({
+          oct: e.target.value
+        })
+        break;
+      case "nov":
+        this.setState({
+          nov: e.target.value
+        })
+        break;
+      case "dec":
+        this.setState({
+          dec: e.target.value
         })
         break;
     };
@@ -298,9 +393,32 @@ const AddEditDeck = React.createClass({
       let onToRevenue5 = () => {
         this.setState({ rev4Display: false, rev5Display: true })
       }
-      // closes budget four and saves all the state into an array with a fxn
+      let onToRevenue6 = () => {
+        this.setState({ rev5Display: false, rev6Display: true })
+      }
+      let onToRevenue7 = () => {
+        this.setState({ rev6Display: false, rev7Display: true })
+      }
+      let onToRevenue8 = () => {
+        this.setState({ rev7Display: false, rev8Display: true })
+      }
+      let onToRevenue9 = () => {
+        this.setState({ rev8Display: false, rev9Display: true })
+      }
+      let onToRevenue10 = () => {
+        this.setState({ rev9Display: false, rev10Display: true })
+      }
+      let onToRevenue11 = () => {
+        this.setState({ rev10Display: false, rev11Display: true })
+      }
+      let onToRevenue12 = () => {
+        this.setState({ rev11Display: false, rev12Display: true })
+      }
+      let onToRevenue13 = () => {
+        this.setState({ rev12Display: false, rev13Display: true })
+      }
       let revenueClose = () => {
-        this.setState({ rev5Display: false });
+        this.setState({ rev13Display: false });
       }
 
       return (
@@ -322,10 +440,19 @@ const AddEditDeck = React.createClass({
           <Budget3 show={this.state.bud3Display} next={onToBudget4} onUpdate={this.handleFormState}/>
           <Budget4 show={this.state.bud4Display} next={budgetClose} onUpdate={this.handleFormState}/>
           <Revenue1 show={this.state.rev1Display} next={onToRevenue2} onUpdate={this.handleFormState}/>
-          <Revenue2 show={this.state.rev2Display} next={onToRevenue3} onUpdate={this.handleFormState} unitOfBusiness={this.state.unitOfBusiness} />
-          <Revenue3 show={this.state.rev3Display} next={onToRevenue4} onUpdate={this.handleFormState} revenueEvent={this.state.revenueEvent} />
-          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} unitOfBusiness={this.state.unitOfBusiness} revenueEvent={this.state.revenueEvent} revenueMedium={this.state.revenueMedium} />
-          <Revenue5 show={this.state.rev5Display} next={revenueClose} onUpdate={this.handleFormState} revenueEvent={this.state.revenueEvent} />
+          <Revenue2 show={this.state.rev2Display} next={onToRevenue3} onUpdate={this.handleFormState} unitA={this.state.unitA}/>
+          <Revenue3 show={this.state.rev3Display} next={onToRevenue4} onUpdate={this.handleFormState} unitA={this.state.unitA}/>
+          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
+          <Revenue5 show={this.state.rev5Display} next={onToRevenue6} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
+          <Revenue6 show={this.state.rev6Display} next={onToRevenue7} onUpdate={this.handleFormState} unitA={this.state.unitA} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
+          <Revenue7 show={this.state.rev7Display} next={onToRevenue8} onUpdate={this.handleFormState}/>
+          <Revenue8 show={this.state.rev8Display} next={onToRevenue9} onUpdate={this.handleFormState} eventB={this.state.eventB} mediumC={this.state.mediumC} />
+          <Revenue9 show={this.state.rev9Display} next={onToRevenue10} onUpdate={this.handleFormState}/>
+          <Revenue10 show={this.state.rev10Display} next={onToRevenue11} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
+          <Revenue11 show={this.state.rev11Display} next={onToRevenue12} onUpdate={this.handleFormState}/>
+          <Revenue12 show={this.state.rev12Display} next={onToRevenue13} onUpdate={this.handleFormState}/>
+          <Revenue13 show={this.state.rev13Display} next={revenueClose} onUpdate={this.handleFormState}/>
+
         </div>
       );
     }

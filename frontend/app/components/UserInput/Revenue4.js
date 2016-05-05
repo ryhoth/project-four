@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, FormGroup, ControlLabel, FormControl, Button, InputGroup } from 'react-bootstrap';
 
-class ListDecks extends Component {
+class Revenue4 extends Component {
 
 //marketing questions
   render() {
@@ -13,12 +13,58 @@ class ListDecks extends Component {
         </Modal.Header>
         <Modal.Body>
           <form>
-            <FormGroup controlId="formControlsText">
-              <ControlLabel>What is the probability that {this.props.unitOfBusiness} {this.props.revenueEvent}ing at {this.props.revenueMedium} will make money?</ControlLabel>
-              <InputGroup>
-                <FormControl name="profitProbability" type="text" placeholder="" onChange={this.props.onUpdate} />
-                <InputGroup.Addon>%</InputGroup.Addon>
-              </InputGroup>
+            <FormGroup controlId="formControlsSelect">
+              <ControlLabel>How many {this.props.eventB}s do you expect in:</ControlLabel>
+
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>January</ControlLabel>
+                    <FormControl name="jan" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>February</ControlLabel>
+                    <FormControl name="feb" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>March</ControlLabel>
+                    <FormControl name="mar" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>April</ControlLabel>
+                    <FormControl name="apr" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>May</ControlLabel>
+                    <FormControl name="may" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>June</ControlLabel>
+                    <FormControl name="jun" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>July</ControlLabel>
+                    <FormControl name="jul" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>August</ControlLabel>
+                    <FormControl name="aug" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>September</ControlLabel>
+                    <FormControl name="sept" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>October</ControlLabel>
+                    <FormControl name="oct" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>November</ControlLabel>
+                    <FormControl name="nov" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+                <FormGroup controlId="formControlsText">
+                  <ControlLabel>December</ControlLabel>
+                    <FormControl name="dec" type="text" placeholder="" onChange={this.props.onUpdate} />
+                </FormGroup>
+
             </FormGroup>
           </form>
         </Modal.Body>
@@ -30,4 +76,4 @@ class ListDecks extends Component {
   }
 }
 
-export default ListDecks;
+export default Revenue4;

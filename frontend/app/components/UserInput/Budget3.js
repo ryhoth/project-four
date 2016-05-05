@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, FormGroup, ControlLabel, FormControl, Button, InputGroup } from 'react-bootstrap';
 
-class ListDecks extends Component {
+class Budget3 extends Component {
 
 
   render() {
@@ -105,4 +105,4 @@ class ListDecks extends Component {
   }
 }
 
-export default ListDecks;
+export default Budget3;

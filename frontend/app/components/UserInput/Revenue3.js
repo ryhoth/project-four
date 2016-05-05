@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, FormGroup, ControlLabel, FormControl, Button, InputGroup } from 'react-bootstrap';
 
-class ListDecks extends Component {
+class Revenue3 extends Component {
 
 //marketing questions
   render() {
@@ -14,8 +14,8 @@ class ListDecks extends Component {
         <Modal.Body>
           <form>
             <FormGroup controlId="formControlsText">
-              <ControlLabel>What is the medium in which your business will profit from {this.props.revenueEvent}?</ControlLabel>
-              <FormControl name="revenueMedium" type="text" placeholder="Field, website, software..." onChange={this.props.onUpdate} />
+              <ControlLabel>What is the event in which your business will gain from your {this.props.unitA}?</ControlLabel>
+              <FormControl name="eventB" type="text" placeholder="Field run, page visit, trail/demo..." onChange={this.props.onUpdate} />
             </FormGroup>
           </form>
         </Modal.Body>
@@ -27,4 +27,4 @@ class ListDecks extends Component {
   }
 }
 
-export default ListDecks;
+export default Revenue3;

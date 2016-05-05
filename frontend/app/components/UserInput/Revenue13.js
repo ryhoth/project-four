@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, FormGroup, ControlLabel, FormControl, Button, InputGroup } from 'react-bootstrap';
 
-class Revenue2 extends Component {
+class Revenue13 extends Component {
 
 //marketing questions
   render() {
@@ -14,7 +14,7 @@ class Revenue2 extends Component {
         <Modal.Body>
           <form>
             <FormGroup controlId="formControlsSelect">
-              <ControlLabel>How many {this.props.unitA}s do you expect in:</ControlLabel>
+              <ControlLabel>Question:</ControlLabel>
 
                 <FormGroup controlId="formControlsText">
                   <ControlLabel>January</ControlLabel>
@@ -69,11 +69,11 @@ class Revenue2 extends Component {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.next}>Save and continue</Button>
+          <Button onClick={this.props.next}>Save</Button>
         </Modal.Footer>
       </Modal>
     );
   }
 }
 
-export default Revenue2;
+export default Revenue13;

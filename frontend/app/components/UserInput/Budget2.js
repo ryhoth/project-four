@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
-
 import { Modal, FormGroup, ControlLabel, FormControl, Button, InputGroup } from 'react-bootstrap';
-// import HeadcountForm from './HeadcountForm';
 
-const Headcount2 = React.createClass({
+class Budget2 extends Component {
 
-  render () {
+//marketing questions
+  render() {
 
     return (
       <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Employee Questionaire</Modal.Title>
+          <Modal.Title id="contained-modal-title-lg">Marketing</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {this.props.empQuestForms}
+          <form>
+
+          </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.next}>Save</Button>
+          <Button onClick={this.props.next}>Save and continue</Button>
         </Modal.Footer>
       </Modal>
     );
   }
-});
+}
 
-
-export default Headcount2;
+export default Budget2;

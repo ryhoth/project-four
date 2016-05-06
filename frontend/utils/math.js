@@ -1,77 +1,8 @@
-var arrayOfForms = [
-	{name: "ryan",
-	role:"killa",
-	salary: 2000,
-	bonus: 10,
-	bonues_percentage: 0.05
-	},
-	{name: "travis",
-	role: "thug",
-	salary: 1000,
-	bonus: 30,
-	bonues_percentage: 0.05
-	},
-	{name: "pooja",
-	role: "pimp",
-	salary: 5000,
-	bonus: 20,
-	bonues_percentage: 0.05
-	}
-];
-
-var budgetData = [
-	{
-		consultants:{
-			finance:250,
-			legal: 500,
-			tech: 500,
-		},
-		operations:{
-
-		},
-		capex:{
-
-		},
-		marketing:{
-
-		}
-	}
-	];
 
 
-	var revData = {
-		unitA:{
-			name:"A",
-			projections:[0,1,2,3,4,12]
-		},
-		eventB:{
-			name:"B",
-			projections:[1,1,2,3,4,4]
-		},
-		mediumC:{
-			name: "C",
-			projections:[]
-		},
-		probOfB:{
-					name:"P(B)",
-					projections:[1,1,2,3,4,4]
-				},
-		percOfC: {
-					name:"P(C)",
-					projections:[1,1,2,3,4,4]
-				},
-		dollarPerPofB:{
-					name:"DollarPerP(C)",
-					projections:[1,1,2,3,4,4]
-		``		},
-		dollarPerPofC:{
-					name:"DollarPerP(C)",
-					projections:[1,1,2,3,4,4]
-		``		},
-	}
+module.exports = {
 
-
-var xlFactory = {
+xlFactory : {
 		objOrg : function (obj) {
 		var placeHolderObject = {
 			expenseName : [],
@@ -233,59 +164,132 @@ var xlFactory = {
 				}
 				return arrayPlaceholder;
 		}
-	}
-};
-
-var x = xlFactory.form2Table(arrayOfForms);
-var y = xlFactory.objOrg(budget[0]["consultants"])
-
-var headCountTable = function (objRaw) {
-	var obj = xlFactory.form2Table(objRaw);
-	xlFactory.spreadElements(renda, obj, "role", "salary");
-	var monthlies = xlFactory.sumMonthlies(renda, obj, "role", "salary");
-	var bonusPerc = 0.05;
-	var bonuses = xlFactory.arrOpSingle(monthlies, bonusPerc, "multiply");
-	bonuses.unshift("Bonuses");
-	renda.push(bonuses);
-	var totalMontliesPlusBonuses = xlFactory.arrOp(monthlies, bonuses, "add");
-	renda.push(totalMontliesPlusBonuses);
-	var tax = 0.11;
-	var taxesAndBenefits = xlFactory.arrOpSingle(totalMontliesPlusBonuses, tax, "multiply");
-	totalMontliesPlusBonuses.unshift("totalMontliesPlusBonuses");
-	taxesAndBenefits.unshift("Taxes and Benefits");
-	renda.push(taxesAndBenefits);
-	var totalMontliesPlusBonusesPlusTaxes = xlFactory.arrOp(totalMontliesPlusBonuses, taxesAndBenefits, "add");
-	totalMontliesPlusBonusesPlusTaxes.unshift("Grand Total Monthlies")
-	renda.push(totalMontliesPlusBonusesPlusTaxes);
-	console.log(renda);
-
-};
-
-var budgetTable = function(objRaw, objRaw2, objRaw3, objRaw4){
-	var renda = [];
-	// consultants
-	var obj = xlFactory.objOrg(objRaw)
-	xlFactory.spreadElements(renda, obj, "expenseName", "amount");
-	var monthlies = xlFactory.sumMonthlies(renda, obj, "expenseName", "amount");
-	// ops
-	if(objRaw2){
-		var obj2 = xlFactory.objOrg(objRaw2)
-		xlFactory.spreadElements(renda, obj2, "expenseName", "amount");
-		var monthlies2 = xlFactory.sumMonthlies(renda, obj2, "expenseName", "amount");
-		// whatever
-		if(objRaw3){
-			var obj3 = xlFactory.objOrg(objRaw3)
-			xlFactory.spreadElements(renda, obj3, "expenseName", "amount");
-			var monthlies3 = xlFactory.sumMonthlies(renda, obj3, "expenseName", "amount");
+	},
+	headCountTable : function (objRaw) {
+		var obj = xlFactory.form2Table(objRaw);
+		xlFactory.spreadElements(renda, obj, "role", "salary");
+		var monthlies = xlFactory.sumMonthlies(renda, obj, "role", "salary");
+		var bonusPerc = 0.05;
+		var bonuses = xlFactory.arrOpSingle(monthlies, bonusPerc, "multiply");
+		bonuses.unshift("Bonuses");
+		renda.push(bonuses);
+		var totalMontliesPlusBonuses = xlFactory.arrOp(monthlies, bonuses, "add");
+		renda.push(totalMontliesPlusBonuses);
+		var tax = 0.11;
+		var taxesAndBenefits = xlFactory.arrOpSingle(totalMontliesPlusBonuses, tax, "multiply");
+		totalMontliesPlusBonuses.unshift("totalMontliesPlusBonuses");
+		taxesAndBenefits.unshift("Taxes and Benefits");
+		renda.push(taxesAndBenefits);
+		var totalMontliesPlusBonusesPlusTaxes = xlFactory.arrOp(totalMontliesPlusBonuses, taxesAndBenefits, "add");
+		totalMontliesPlusBonusesPlusTaxes.unshift("Grand Total Monthlies")
+		renda.push(totalMontliesPlusBonusesPlusTaxes);
+		console.log(renda);
+	},
+	budgetTable : function(objRaw, objRaw2, objRaw3, objRaw4){
+		var renda = [];
+		// consultants
+		var obj = xlFactory.objOrg(objRaw)
+		xlFactory.spreadElements(renda, obj, "expenseName", "amount");
+		var monthlies = xlFactory.sumMonthlies(renda, obj, "expenseName", "amount");
+		// ops
+		if(objRaw2){
+			var obj2 = xlFactory.objOrg(objRaw2)
+			xlFactory.spreadElements(renda, obj2, "expenseName", "amount");
+			var monthlies2 = xlFactory.sumMonthlies(renda, obj2, "expenseName", "amount");
+			// whatever
+			if(objRaw3){
+				var obj3 = xlFactory.objOrg(objRaw3)
+				xlFactory.spreadElements(renda, obj3, "expenseName", "amount");
+				var monthlies3 = xlFactory.sumMonthlies(renda, obj3, "expenseName", "amount");
+			}
 		}
+		console.log(renda);
+	},
+	test: function(testLog){
+		console.log("hey man, I'm here", testLog)
 	}
-	console.log(renda);
-};
+}
 
-
-var revenueTable = function () {
 
 }
 
-budgetTable(budget[0]["consultants"], budget[0]["operations"])
-headCountTable(arrayOfForms);
+
+
+// var x = xlFactory.form2Table(arrayOfForms);
+// var y = xlFactory.objOrg(budget[0]["consultants"])
+// xlFactory.budgetTable(budget[0]["consultants"], budget[0]["operations"])
+// xlFactory.headCountTable(arrayOfForms);
+
+
+
+// var arrayOfForms = [
+// 	{name: "ryan",
+// 	role:"killa",
+// 	salary: 2000,
+// 	bonus: 10,
+// 	bonues_percentage: 0.05
+// 	},
+// 	{name: "travis",
+// 	role: "thug",
+// 	salary: 1000,
+// 	bonus: 30,
+// 	bonues_percentage: 0.05
+// 	},
+// 	{name: "pooja",
+// 	role: "pimp",
+// 	salary: 5000,
+// 	bonus: 20,
+// 	bonues_percentage: 0.05
+// 	}
+// ];
+//
+// var budgetData = [
+// 	{
+// 		consultants:{
+// 			finance:250,
+// 			legal: 500,
+// 			tech: 500,
+// 		},
+// 		operations:{
+//
+// 		},
+// 		capex:{
+//
+// 		},
+// 		marketing:{
+//
+// 		}
+// 	}
+// 	];
+//
+//
+// 	var revData = {
+// 		unitA:{
+// 			name:"A",
+// 			projections:[0,1,2,3,4,12]
+// 		},
+// 		eventB:{
+// 			name:"B",
+// 			projections:[1,1,2,3,4,4]
+// 		},
+// 		mediumC:{
+// 			name: "C",
+// 			projections:[]
+// 		},
+// 		probOfB:{
+// 					name:"P(B)",
+// 					projections:[1,1,2,3,4,4]
+// 				},
+// 		percOfC: {
+// 					name:"P(C)",
+// 					projections:[1,1,2,3,4,4]
+// 				},
+// 		dollarPerPofB:{
+// 					name:"DollarPerP(C)",
+// 					projections:[1,1,2,3,4,4]
+// 		``		},
+// 		dollarPerPofC:{
+// 					name:"DollarPerP(C)",
+// 					projections:[1,1,2,3,4,4]
+// 		``		},
+// 	}

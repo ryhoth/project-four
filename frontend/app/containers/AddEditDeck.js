@@ -14,6 +14,7 @@ import Revenue5 from '../components/UserInput/Revenue5';
 import Revenue6 from '../components/UserInput/Revenue6';
 import Revenue7 from '../components/UserInput/Revenue7';
 import Revenue8 from '../components/UserInput/Revenue8';
+import ShowDeck from './ShowDeck';
 
 
 
@@ -88,6 +89,8 @@ const AddEditDeck = React.createClass({
       pettyCash: null,
 
       capEx: null,
+
+      showDeck: false,
 
     };
   },
@@ -330,17 +333,17 @@ const AddEditDeck = React.createClass({
   employeeData: [],
   saveEmployeeGeneral: function () {
     this.employeeData.push({
-      employeeCount: this.state.employeeCount,
-      employeeTaxBenefits: this.state.employeeTaxBenefits
+      employeeCount: parseInt(this.state.employeeCount),
+      employeeTaxBenefits: parseInt(this.state.employeeTaxBenefits)
     })
   },
   saveEmployeeData: function () {
     this.employeeData.push({
       employeeName: this.state.employeeName,
       employeePosition: this.state.employeePosition,
-      employeeSalary: this.state.employeeSalary,
-      employeeBonus: this.state.employeeBonus,
-      employeeEquity: this.state.employeeEquity
+      employeeSalary: parseInt(this.state.employeeSalary),
+      employeeBonus: parseInt(this.state.employeeBonus),
+      employeeEquity: parseInt(this.state.employeeEquity)
     });
     console.log("employeeData: ", this.employeeData);
   },
@@ -349,29 +352,29 @@ const AddEditDeck = React.createClass({
   saveBudgetData: function () {
     this.budgetData.push({
       consultants : {
-        finance: this.state.finance,
-        legal: this.state.legal,
-        tech: this.state.tech,
-        contentEditorial: this.state.contentEditorial,
-        design: this.state.design,
-        marketing: this.state.marketing,
-        other: this.state.other
+        finance: parseInt(this.state.finance),
+        legal: parseInt(this.state.legal),
+        tech: parseInt(this.state.tech),
+        contentEditorial: parseInt(this.state.contentEditorial),
+        design: parseInt(this.state.design),
+        marketing: parseInt(this.state.marketing),
+        other: parseInt(this.state.other)
       },
       operations : {
-        rent: this.state.rent,
-        internet: this.state.internet,
-        saas: this.state.saas,
-        softwareLicense: this.state.softwareLicense,
-        equipment: this.state.equipment,
-        officeSupplies: this.state.officeSupplies,
-        travel: this.state.travel,
-        ConfTrade: this.state.ConfTrade,
-        duesAndSubscription: this.state.duesAndSubscription,
-        insurance: this.state.insurance,
-        pettyCash: this.state.pettyCash,
+        rent: parseInt(this.state.rent),
+        internet: parseInt(this.state.internet),
+        saas: parseInt(this.state.saas),
+        softwareLicense: parseInt(this.state.softwareLicense),
+        equipment: parseInt(this.state.equipment),
+        officeSupplies: parseInt(this.state.officeSupplies),
+        travel: parseInt(this.state.travel),
+        ConfTrade: parseInt(this.state.ConfTrade),
+        duesAndSubscription: parseInt(this.state.duesAndSubscription),
+        insurance: parseInt(this.state.insurance),
+        pettyCash: parseInt(this.state.pettyCash),
       },
       capEx : {
-        capEx: this.state.capEx
+        capEx: parseInt(this.state.capEx)
       }
     });
     console.log("budgetData:", this.budgetData);
@@ -398,23 +401,30 @@ const AddEditDeck = React.createClass({
   },
 
   //fxn that sends all data to math.js
-  sendToMath: function () {
+  // sendToMath: function () {
+  //   // if (this.employeeData && this.budgetData && this.revData) {
+  //     this.props.grabEmployee(this.employeeData);
+  //     this.props.grabBudget(this.budgetData);
+  //     this.props.grabRevenue(this.revData);
+  //
+  //   // }
+  // },
 
-    // if (this.employeeData && this.budgetData && this.revData) {
-      this.props.grabEmployee(this.employeeData);
-      this.props.grabBudget(this.budgetData);
-      this.props.grabRevenue(this.revData);
-    // }
-  },
 
 // this is an array where number of forms to be rendered into Headcount2 will be pushed into
   employeeQuestFormArray: [],
 
     render() {
+          // budgetData={this.budgetData} revData={this.revData}
+      if(this.state.showDeck) {
+        return(
+          <ShowDeck employeeData={this.employeeData} budgetData={this.budgetData} revData={this.revData} />
+        )
+      }
       // this moves on from employee questionair 1 -> 2 and calls fxn that populates the questionair form with employee count
       let onToEmployees = () => {
         this.setState({ emp1Display: false, emp2Display: true });
-        this.saveEmployeeGeneral();
+        // this.saveEmployeeGeneral();
         employeeForms();
       }
       //this closes out questionaire and saves the data from employee questionaire into an array
@@ -507,7 +517,7 @@ const AddEditDeck = React.createClass({
             <Button bsStyle="primary" onClick={()=>this.setState({ rev1Display: true })}>
               Revenue
             </Button>
-            <Button bsStyle="success" onClick={this.sendToMath}>
+            <Button bsStyle="success" onClick={()=>this.setState({ showDeck: true })}>
               Submit
             </Button>
           </ButtonToolbar>
@@ -530,3 +540,5 @@ const AddEditDeck = React.createClass({
 });
 
 export default AddEditDeck;
+
+            // <Button bsStyle="success" onClick={this.sendToMath}>

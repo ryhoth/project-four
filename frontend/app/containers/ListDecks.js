@@ -6,29 +6,34 @@ import { ButtonToolbar, Button, Grid } from 'react-bootstrap';
 const ListDecks = React.createClass({
   // arr : [],
   //
-  getInitialState() {
-    return{
-      employeeData: [],
-      budgetData: [],
-      revenueData: [],
-  }
-  },
+  // getInitialState() {
+  //   return{
+  //     employeeData: [],
+  //     budgetData: [],
+  //     revenueData: [],
+  // }
+  // },
+  // //
+  // handleUpdateEmployee: function(array) {
+  //   this.setState({
+  //     employeeData: array
+  //   });
+  // },
+  // handleUpdateBudget: function(array) {
+  //   this.setState({
+  //     budgetData: array
+  //   });
+  // },
+  // handleUpdateRevenue: function(array) {
+  //   this.setState({
+  //     revenueData: array
+  //   });
+  // },
 
-  handleUpdateEmployee: function(array) {
-    this.setState({
-      employeeData: array
-    });
-  },
-  handleUpdateBudget: function(array) {
-    this.setState({
-      budgetData: array
-    });
-  },
-  handleUpdateRevenue: function(array) {
-    this.setState({
-      revenueData: array
-    });
-  },
+
+
+
+
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -80,15 +85,42 @@ const ListDecks = React.createClass({
   //   );
   // }
 
+  // let tracks = this.props.tracks.map((track,index) => {
+  //
+  //      return (
+  //        <div key={index}>
+  //          <div className="rec-img">
+  //            <img src={track.img} />
+  //          </div>
+  //          <h3 className="song-title">{track.song_title}</h3>
+  //          <p className="artist-name">{track.artist_name.toString().replace(",",", ")}</p>
+  //        </div>
+  //      )
+  //    });
+
+
+
 
   render: function() {
 
-    console.log("List deck employeeData:",this.state.employeeData);
-    console.log("List deck budgetData:",this.state.budgetData);
-    console.log("List deck revenueData:",this.state.revenueData);
+    // let tracks = this.props.tracks.map((track,index) => {
+    //
+    //    return (
+    //      <div key={index}>
+    //        <div className="rec-img">
+    //          <img src={track.img} />
+    //        </div>
+    //        <h3 className="song-title">{track.song_title}</h3>
+    //        <p className="artist-name">{track.artist_name.toString().replace(",",", ")}</p>
+    //      </div>
+    //    )
+    //  }),
+    //     <AddEditDeck grabEmployee={this.handleUpdateEmployee} grabBudget={this.handleUpdateBudget} grabRevenue={this.handleUpdateRevenue} />
+    // console.log("List deck employeeData:",this.state.employeeData);
+    // console.log("List deck budgetData:",this.state.budgetData);
+    // console.log("List deck revenueData:",this.state.revenueData);
     return (
       <Grid fluid>
-        <AddEditDeck grabEmployee={this.handleUpdateEmployee} grabBudget={this.handleUpdateBudget} grabRevenue={this.handleUpdateRevenue} />
         <br/><br/><hr/>
         <p>Loading products...</p>
       </Grid>

@@ -10,7 +10,7 @@ import SignIn from '../containers/SignIn';
 import SignUp from '../containers/SignUp';
 
 import ListDecks from '../containers/ListDecks';
-import DeckContent from '../containers/DeckContent';
+import ShowDeck from '../containers/ShowDeck';
 import AddEditDeck from '../containers/AddEditDeck';
 
 import { Nav, Navbar, NavItem, NavDropdown, DropdownButton} from 'react-bootstrap';
@@ -29,10 +29,10 @@ class NaviBar extends Component {
             <Link to={'/ListDecks'}>List Decks</Link>
           </Navbar.Brand>
           <Navbar.Brand>
-            <Link to={'/ListDecks/NewDeck'}>New Deck</Link>
+            <Link to={'/NewDeck'}>New Deck</Link>
           </Navbar.Brand>
           <Navbar.Brand>
-            <Link to={'/ListDecks/DeckContent'}>Deck Content</Link>
+            <Link to={'/ShowDeck'}>Show Deck</Link>
           </Navbar.Brand>
         </Nav>
         <Nav pullRight>

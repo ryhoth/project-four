@@ -24,5 +24,21 @@ module.exports = {
       loaders: ['babel-loader'],
       include: path.join(__dirname, 'app')
     }]
-  }
+  },
+  resolve: {
+      extensions: ['', '.js', '.jsx']
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          loader: 'babel',
+          exclude: /node_modules/,
+          query: {
+            cacheDirectory: true,
+            presets: ['react', 'es2015']
+          }
+        }
+      ]
+    }
 };

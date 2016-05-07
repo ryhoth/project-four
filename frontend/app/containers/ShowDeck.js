@@ -31,20 +31,20 @@ const ShowDeck = React.createClass({
 			<Grid>
 			<h2>Employees</h2>
 			<BootstrapTable data={ renderEmployee } striped={true} hover={true}>
-				<TableHeaderColumn dataField='Employees' isKey={ true }>Employees</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 1'>Month 1</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 2'>Month 2</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 3'>Month 3</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 4'>Month 4</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 5'>Month 5</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 6'>Month 6</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 7'>Month 7</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 8'>Month 8</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 9'>Month 9</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 10'>Month 10</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 11'>Month 11</TableHeaderColumn>
-				<TableHeaderColumn dataField='Month 12'>Month 12</TableHeaderColumn>
-				<TableHeaderColumn dataField='Total'>Total</TableHeaderColumn>
+				<TableHeaderColumn width='140' dataField='Employees' isKey={ true }>Employees</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 1'>Month 1</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 2'>Month 2</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 3'>Month 3</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 4'>Month 4</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 5'>Month 5</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 6'>Month 6</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 7'>Month 7</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 8'>Month 8</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 9'>Month 9</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 10'>Month 10</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 11'>Month 11</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Month 12'>Month 12</TableHeaderColumn>
+				<TableHeaderColumn width='80' dataAlign='center' dataField='Total'>Total</TableHeaderColumn>
 			</BootstrapTable>
 			</Grid>
     );

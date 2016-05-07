@@ -114,7 +114,7 @@ module.exports = {
 				onerow.push(this.sumRow(objectWithMembers, key));
 			}
 			var completeRow = this.addsSumToEndArray(onerow);
-			onerow.unshift("Monthlies");
+			onerow.unshift("Salary");
 			RowArrayToPush.push(onerow);
 			return onerow;
 	},
@@ -196,20 +196,20 @@ module.exports = {
 		var monthlies = this.sumMonthlies(renda, obj, "employeePosition", "employeeSalary");
 		var bonusPerc = 0.05;
 		var bonuses = this.arrOpSingle(monthlies, bonusPerc, "multiply");
-		bonuses.unshift("Bonuses");
+		bonuses.unshift("Bonus");
 		renda.push(bonuses);
 		var totalMontliesPlusBonuses = this.arrOp(monthlies, bonuses, "add");
 		renda.push(totalMontliesPlusBonuses);
 		var tax = 0.11;
 		var taxesAndBenefits = this.arrOpSingle(totalMontliesPlusBonuses, tax, "multiply");
-		totalMontliesPlusBonuses.unshift("totalMontliesPlusBonuses");
+		totalMontliesPlusBonuses.unshift("Salary and Bonus");
 		taxesAndBenefits.unshift("Taxes and Benefits");
 		renda.push(taxesAndBenefits);
 		var totalMontliesPlusBonusesPlusTaxes = this.arrOp(totalMontliesPlusBonuses, taxesAndBenefits, "add");
-		totalMontliesPlusBonusesPlusTaxes.unshift("Grand Total Monthlies")
+		totalMontliesPlusBonusesPlusTaxes.unshift("Grand Total")
 		renda.push(totalMontliesPlusBonusesPlusTaxes);
 		// renda = this.table(renda, "Employees")
-		// console.log("RENDAAAA", renda);
+		console.log("RENDAAAA", renda);
 		// console.log("randa in headcouttable fxn:",renda);
 		return renda;
 

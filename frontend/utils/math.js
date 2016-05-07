@@ -1,22 +1,22 @@
 
 
 module.exports = {
-
-xlFactory : {
-		objOrg : function (obj) {
-		var placeHolderObject = {
-			expenseName : [],
-			amount : []
-		};
-		for (var prop in obj){
-			placeHolderObject["expenseName"].push(prop);
-			placeHolderObject["amount"].push(obj[prop]);
-		}
-		console.log(placeHolderObject)
-		return placeHolderObject;
+	objOrg : function (obj) {
+	var placeHolderObject = {
+		expenseName : [],
+		amount : []
+	};
+	for (var prop in obj){
+		placeHolderObject["expenseName"].push(prop);
+		placeHolderObject["amount"].push(obj[prop]);
+	}
+	// console.log(placeHolderObject)
+	return placeHolderObject;
 	},
-	// xlFactory.objOrg(budget[0]["consultants"])
-	form2Table : function (arr) {
+
+
+	// this.objOrg(budget[0]["consultants"])
+	employeeInputOrganize : function (arr) {
 	// creates a place holder object
 	var placeHolderObject = {};
 	// fills that object with arrays from one sample form
@@ -31,6 +31,7 @@ xlFactory : {
 		}
 			return placeHolderObject;
 	},
+
 	sumRow : function (obj, key) {
 		var sum = 0;
 		if (typeof obj[key][0] === "number") {
@@ -42,6 +43,7 @@ xlFactory : {
 		}
 		return sum;
 	},
+
 	sumColumn : function (obj, idx) {
 		var sum = 0;
 			for (var prop in obj){
@@ -51,6 +53,7 @@ xlFactory : {
 			}
 		return sum;
 	},
+
 	makeColumnArray : function(obj, idx){
 		var columnArray = [];
 		for (var prop in obj){
@@ -58,6 +61,7 @@ xlFactory : {
 		}
 		return columnArray;
 	},
+
 	sumArray : function (arr){
 		var sum = 0;
 		for(var i=0; i < arr.length ; i++){
@@ -65,12 +69,14 @@ xlFactory : {
 		}
 		return sum;
 	},
+
 	addsSumToEndArray : function (arr) {
-		var theSum = xlFactory.sumArray(arr);
+		var theSum = this.sumArray(arr);
 		var placeHolderArr = arr;
 		placeHolderArr.push(theSum);
 		return placeHolderArr;
 	},
+
 	monthsGenerator : function (){
 		var arr = [];
 		for(var i = 0; i <= 12; i++){
@@ -78,27 +84,41 @@ xlFactory : {
 		}
 		return arr;
 	},
+
+	// spreadElements : function(RowArrayToPush, objectWithMembers, memberProp, key){
+	// 	for(var i = 0; i < objectWithMembers[memberProp].length; i++){
+	// 		var onerow =[];
+	// 		for(var j = 0; j < 12; j++){
+	// 			onerow.push(objectWithMembers[key][i]);
+	// 		}
+	// 		var completeRow = this.addsSumToEndArray(onerow);
+	// 		onerow.unshift(objectWithMembers[memberProp][i]);
+	// 		RowArrayToPush.push(onerow);
+	// 	}
+	// },
 	spreadElements : function(RowArrayToPush, objectWithMembers, memberProp, key){
 		for(var i = 0; i < objectWithMembers[memberProp].length; i++){
 			var onerow =[];
 			for(var j = 0; j < 12; j++){
 				onerow.push(objectWithMembers[key][i]);
 			}
-			var completeRow = xlFactory.addsSumToEndArray(onerow);
+			var completeRow = this.addsSumToEndArray(onerow);
 			onerow.unshift(objectWithMembers[memberProp][i]);
 			RowArrayToPush.push(onerow);
 		}
 	},
+
 	sumMonthlies : function(RowArrayToPush, objectWithMembers, memberProp, key){
 			var onerow =[];
 			for(var j = 0; j < 12; j++){
-				onerow.push(xlFactory.sumRow(objectWithMembers, key));
+				onerow.push(this.sumRow(objectWithMembers, key));
 			}
-			var completeRow = xlFactory.addsSumToEndArray(onerow);
+			var completeRow = this.addsSumToEndArray(onerow);
 			onerow.unshift("Monthlies");
 			RowArrayToPush.push(onerow);
 			return onerow;
 	},
+
 	arrOp : function (arr1, arr2, operator){
 		var arrayPlaceholder = [];
 		switch(operator){
@@ -132,6 +152,7 @@ xlFactory : {
 				return arrayPlaceholder;
 		}
 	},
+
 	arrOpSingle : function (arr1, singleNum, operator){
 		var arrayPlaceholder = [];
 		switch(operator){
@@ -165,53 +186,90 @@ xlFactory : {
 				return arrayPlaceholder;
 		}
 	},
+
 	headCountTable : function (objRaw) {
-		var obj = xlFactory.form2Table(objRaw);
-		xlFactory.spreadElements(renda, obj, "role", "salary");
-		var monthlies = xlFactory.sumMonthlies(renda, obj, "role", "salary");
+		var renda =[];
+		var obj = this.employeeInputOrganize(objRaw);
+		// console.log("this is the object after it was parsed in headcount tab fxn", obj)
+		this.spreadElements(renda, obj, "employeePosition", "employeeSalary");
+		// console.log("this is renda in headcount fxn after spreadElements", renda);
+		var monthlies = this.sumMonthlies(renda, obj, "employeePosition", "employeeSalary");
 		var bonusPerc = 0.05;
-		var bonuses = xlFactory.arrOpSingle(monthlies, bonusPerc, "multiply");
+		var bonuses = this.arrOpSingle(monthlies, bonusPerc, "multiply");
 		bonuses.unshift("Bonuses");
 		renda.push(bonuses);
-		var totalMontliesPlusBonuses = xlFactory.arrOp(monthlies, bonuses, "add");
+		var totalMontliesPlusBonuses = this.arrOp(monthlies, bonuses, "add");
 		renda.push(totalMontliesPlusBonuses);
 		var tax = 0.11;
-		var taxesAndBenefits = xlFactory.arrOpSingle(totalMontliesPlusBonuses, tax, "multiply");
+		var taxesAndBenefits = this.arrOpSingle(totalMontliesPlusBonuses, tax, "multiply");
 		totalMontliesPlusBonuses.unshift("totalMontliesPlusBonuses");
 		taxesAndBenefits.unshift("Taxes and Benefits");
 		renda.push(taxesAndBenefits);
-		var totalMontliesPlusBonusesPlusTaxes = xlFactory.arrOp(totalMontliesPlusBonuses, taxesAndBenefits, "add");
+		var totalMontliesPlusBonusesPlusTaxes = this.arrOp(totalMontliesPlusBonuses, taxesAndBenefits, "add");
 		totalMontliesPlusBonusesPlusTaxes.unshift("Grand Total Monthlies")
 		renda.push(totalMontliesPlusBonusesPlusTaxes);
-		console.log(renda);
+		// renda = this.table(renda, "Employees")
+		// console.log("RENDAAAA", renda);
+		// console.log("randa in headcouttable fxn:",renda);
+		return renda;
+
 	},
-	budgetTable : function(objRaw, objRaw2, objRaw3, objRaw4){
+
+	budgetTable : function(objRaw, objRaw2, objRaw3){
 		var renda = [];
 		// consultants
-		var obj = xlFactory.objOrg(objRaw)
-		xlFactory.spreadElements(renda, obj, "expenseName", "amount");
-		var monthlies = xlFactory.sumMonthlies(renda, obj, "expenseName", "amount");
+		var obj = this.objOrg(objRaw)
+		this.spreadElements(renda, obj, "expenseName", "amount");
+		var monthlies = this.sumMonthlies(renda, obj, "expenseName", "amount");
 		// ops
 		if(objRaw2){
-			var obj2 = xlFactory.objOrg(objRaw2)
-			xlFactory.spreadElements(renda, obj2, "expenseName", "amount");
-			var monthlies2 = xlFactory.sumMonthlies(renda, obj2, "expenseName", "amount");
+			var obj2 = this.objOrg(objRaw2)
+			this.spreadElements(renda, obj2, "expenseName", "amount");
+			var monthlies2 = this.sumMonthlies(renda, obj2, "expenseName", "amount");
 			// whatever
 			if(objRaw3){
-				var obj3 = xlFactory.objOrg(objRaw3)
-				xlFactory.spreadElements(renda, obj3, "expenseName", "amount");
-				var monthlies3 = xlFactory.sumMonthlies(renda, obj3, "expenseName", "amount");
+				var obj3 = this.objOrg(objRaw3)
+				this.spreadElements(renda, obj3, "expenseName", "amount");
+				var monthlies3 = this.sumMonthlies(renda, obj3, "expenseName", "amount");
 			}
 		}
-		console.log(renda);
+		return renda;
 	},
-	test: function(testLog){
-		console.log("hey man, I'm here", testLog)
-	}
-}
 
 
-}
+	small : function(arr, legendLeft){
+		var legend = [legendLeft,
+								"Month 1",
+								"Month 2",
+								"Month 3",
+								"Month 4",
+								"Month 5",
+								"Month 6",
+								"Month 7",
+								"Month 8",
+								"Month 9",
+								"Month 10",
+								"Month 11",
+								"Month 12",
+								"Total"];
+
+			// this is the arr that will hold all the objects
+			var obj = {};
+			for (var i=0; i< legend.length; i++){
+				obj[legend[i]] = arr[i]
+			}
+			return obj;
+		},
+
+		table : function(AofA, param2){
+						var arr = [];
+						for(var i=0; i < AofA.length; i++){
+							arr.push( this.small(AofA[i], param2) )
+							}
+							return arr;
+						}
+
+}//end of export
 
 
 

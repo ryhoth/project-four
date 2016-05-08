@@ -352,10 +352,10 @@ const AddEditDeck = React.createClass({
   saveBudgetData: function () {
     this.budgetData.push({
       consultants : {
-        finance: parseInt(this.state.finance),
+        "finance": parseInt(this.state.finance),
         legal: parseInt(this.state.legal),
         tech: parseInt(this.state.tech),
-        contentEditorial: parseInt(this.state.contentEditorial),
+        "content Editorial": parseInt(this.state.contentEditorial),
         design: parseInt(this.state.design),
         marketing: parseInt(this.state.marketing),
         other: parseInt(this.state.other)

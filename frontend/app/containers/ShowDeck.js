@@ -11,7 +11,7 @@ const ShowDeck = React.createClass({
   budgetTotsConsltants : [],
   budgetTotsOps : [],
   budgetTotsCapex : [],
-  
+
   priceFormatter : function (cell, row) {
     return `<i class='glyphicon glyphicon-usd'></i> ${cell}`;
   },

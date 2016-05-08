@@ -1,4 +1,5 @@
 
+
 module.exports = {
 	objOrg : function (obj) {
 	var placeHolderObject = {
@@ -128,7 +129,7 @@ module.exports = {
 					}
 				}
 				return arrayPlaceholder;
-			case "sbutract":
+			case "subtract":
 				for(var j=0; j < arr1.length; j++){
 					if (typeof arr1[j] === "number" ){
 						arrayPlaceholder.push(arr1[j] - arr2[j]);
@@ -214,33 +215,27 @@ module.exports = {
 
 	},
 
-	budgetTable : function(objRaw, totsGlobalVar,objRaw2, objRaw3){
+	budgetTable : function(objRaw, objRaw2, objRaw3){
 		var renda = [];
 		// consultants
 		var obj = this.objOrg(objRaw)
 		this.spreadElements(renda, obj, "expenseName", "amount");
-		totsGlobalVar = this.sumMonthlies(renda, obj, "expenseName", "amount");
-
-		// totsGlobalVar = this.arrOp ( totsGlobalVar, monthlies, "add" );
+		var monthlies = this.sumMonthlies(renda, obj, "expenseName", "amount");
 		// ops
-		// if(objRaw2){
-		// 	var obj2 = this.objOrg(objRaw2)
-		// 	this.spreadElements(renda, obj2, "expenseName", "amount");
-		// 	var monthlies2 = this.sumMonthlies(renda, obj2, "expenseName", "amount");
-		// 	// whatever
-		// 	if(objRaw3){
-		// 		var obj3 = this.objOrg(objRaw3)
-		// 		this.spreadElements(renda, obj3, "expenseName", "amount");
-		// 		var monthlies3 = this.sumMonthlies(renda, obj3, "expenseName", "amount");
-		// 	}
-		// }
+		if(objRaw2){
+			var obj2 = this.objOrg(objRaw2)
+			this.spreadElements(renda, obj2, "expenseName", "amount");
+			var monthlies2 = this.sumMonthlies(renda, obj2, "expenseName", "amount");
+			// whatever
+			if(objRaw3){
+				var obj3 = this.objOrg(objRaw3)
+				this.spreadElements(renda, obj3, "expenseName", "amount");
+				var monthlies3 = this.sumMonthlies(renda, obj3, "expenseName", "amount");
+			}
+		}
 		return renda;
 	},
 
-	addAllBudgetTypes : function(AofABudgetTots, consultants, ops, capex){
-		AofABudgetTots.push( arrOp(arrOp(arrOp(headcount, consultants, "add"), ops, "add"), capex, "add") );
-		return AofABudgetTots;
-	},
 
 	small : function(arr, legendLeft){
 		var legend = [legendLeft,
@@ -266,10 +261,10 @@ module.exports = {
 			return obj;
 		},
 
-		table : function(AofA, legend){
+		table : function(AofA, param2){
 						var arr = [];
 						for(var i=0; i < AofA.length; i++){
-							arr.push( this.small(AofA[i], legend) )
+							arr.push( this.small(AofA[i], param2) )
 							}
 							return arr;
 						}
@@ -284,74 +279,75 @@ module.exports = {
 // xlFactory.headCountTable(arrayOfForms);
 
 
-var arrayOfForms = [
-	{name: "ryan",
-	role:"killa",
-	salary: 2000,
-	bonus: 10,
-	bonues_percentage: 0.05
-	},
-	{name: "travis",
-	role: "thug",
-	salary: 1000,
-	bonus: 30,
-	bonues_percentage: 0.05
-	},
-	{name: "pooja",
-	role: "pimp",
-	salary: 5000,
-	bonus: 20,
-	bonues_percentage: 0.05
-	}
-];
+
+// var arrayOfForms = [
+// 	{name: "ryan",
+// 	role:"killa",
+// 	salary: 2000,
+// 	bonus: 10,
+// 	bonues_percentage: 0.05
+// 	},
+// 	{name: "travis",
+// 	role: "thug",
+// 	salary: 1000,
+// 	bonus: 30,
+// 	bonues_percentage: 0.05
+// 	},
+// 	{name: "pooja",
+// 	role: "pimp",
+// 	salary: 5000,
+// 	bonus: 20,
+// 	bonues_percentage: 0.05
+// 	}
+// ];
 //
-var budgetData = [
-	{
-		consultants:{
-			finance:250,
-			legal: 500,
-			tech: 500,
-		},
-		operations:{
-
-		},
-		capex:{
-
-		},
-		marketing:{
-
-		}
-	}
-	];
-
-
-	var revData = {
-		unitA:{
-			name:"A",
-			projections:[0,1,2,3,4,12]
-		},
-		eventB:{
-			name:"B",
-			projections:[1,1,2,3,4,4]
-		},
-		mediumC:{
-			name: "C",
-			projections:[]
-		},
-		probOfB:{
-					name:"P(B)",
-					projections:[1,1,2,3,4,4]
-				},
-		percOfC: {
-					name:"P(C)",
-					projections:[1,1,2,3,4,4]
-				},
-		dollarPerPofB:{
-					name:"DollarPerP(C)",
-					projections:[1,1,2,3,4,4]
-			},
-		dollarPerPofC:{
-					name:"DollarPerP(C)",
-					projections:[1,1,2,3,4,4]
-		},
-	}
+// var budgetData = [
+// 	{
+// 		consultants:{
+// 			finance:250,
+// 			legal: 500,
+// 			tech: 500,
+// 		},
+// 		operations:{
+//
+// 		},
+// 		capex:{
+//
+// 		},
+// 		marketing:{
+//
+// 		}
+// 	}
+// 	];
+//
+//
+// 	var revData = {
+// 		unitA:{
+// 			name:"A",
+// 			projections:[0,1,2,3,4,12]
+// 		},
+// 		eventB:{
+// 			name:"B",
+// 			projections:[1,1,2,3,4,4]
+// 		},
+// 		mediumC:{
+// 			name: "C",
+// 			projections:[]
+// 		},
+// 		probOfB:{
+// 					name:"P(B)",
+// 					projections:[1,1,2,3,4,4]
+// 				},
+// 		percOfC: {
+// 					name:"P(C)",
+// 					projections:[1,1,2,3,4,4]
+// 				},
+// 		dollarPerPofB:{
+// 					name:"DollarPerP(C)",
+// 					projections:[1,1,2,3,4,4]
+// 		``		},
+// 		dollarPerPofC:{
+// 					name:"DollarPerP(C)",
+// 					projections:[1,1,2,3,4,4]
+// 		``		},
+// 	}

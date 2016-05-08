@@ -13,13 +13,9 @@ class Welcome extends Component {
       <Grid fluid>
         <Jumbotron>
           <PageHeader>Welcome to Fox Deck</PageHeader>
-          <p>A quick and simple way for entrepreneurs to generate financial projections for their business idea.</p>
+          <p>A quick and simple way for entrepreneurs to generate financial projections for their business ideas.</p>
           <p><Button bsStyle="info"><Link to={'/About'}>Learn more</Link></Button></p>
         </Jumbotron><br/>
-        <Link to={'/SignUp'}>SignUp</Link><br/>
-        <SignUpForm /><br/><br/><hr/>
-        <Link to={'/SignIn'}>SignIn</Link><br/>
-        <SignInForm /><br/><br/><hr/>
       </Grid>
     );
   }

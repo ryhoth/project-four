@@ -389,7 +389,7 @@ const AddEditDeck = React.createClass({
     }
     for(let month = 0; month < 12; month++ ){
       this.revData[param].projections.push(
-        this.state[Object.keys(this.state)[month]]
+        parseInt(this.state[Object.keys(this.state)[month]])
       )
     }
   },

@@ -14,7 +14,7 @@ class Budget4 extends Component {
         <Modal.Body>
           <form>
             <FormGroup controlId="formControlsText">
-              <ControlLabel>How much do you expect to spend on capital expenditure in year one?</ControlLabel>
+              <ControlLabel>How much do you expect to spend on capital expenditure per month?</ControlLabel>
                 <InputGroup>
                   <InputGroup.Addon>$</InputGroup.Addon>
                   <FormControl name="capEx" type="text" placeholder="Enter text" onChange={this.props.onUpdate} />

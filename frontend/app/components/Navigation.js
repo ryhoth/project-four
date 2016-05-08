@@ -29,15 +29,21 @@ class NaviBar extends Component {
             <Link to={'/ListDecks'}>List Decks</Link>
           </Navbar.Brand>
           <Navbar.Brand>
+            <Link to={'/ShowDeck'}>Show Deck</Link>
+          </Navbar.Brand>
+          <Navbar.Brand>
             <Link to={'/NewDeck'}>New Deck</Link>
           </Navbar.Brand>
           <Navbar.Brand>
-            <Link to={'/ShowDeck'}>Show Deck</Link>
+            <Link to={'/About'}>About</Link>
           </Navbar.Brand>
         </Nav>
         <Nav pullRight>
           <Navbar.Brand>
-            <Link to={'/About'}>About</Link>
+            <Link to={'/SignUp'}>Sign Up</Link>
+          </Navbar.Brand>
+          <Navbar.Brand>
+            <Link to={'/SignIn'}>Log In</Link>
           </Navbar.Brand>
         </Nav>
       </Navbar>

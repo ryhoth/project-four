@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
+import AddEditDeck from '../containers/AddEditDeck';
 
 
 class SignUpForm extends Component {
@@ -23,9 +25,7 @@ class SignUpForm extends Component {
           <ControlLabel>Confirm password</ControlLabel>
           <FormControl type="password" />
         </FormGroup>
-        <Button type="submit">
-          Submit
-        </Button>
+        <Button type="submit"><Link to={'/NewDeck'}>Sign Up</Link></Button>
       </form>
     );
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
 
 import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import AddEditDeck from '../containers/AddEditDeck';
 
 
 class SignInForm extends Component {
@@ -19,9 +21,7 @@ class SignInForm extends Component {
             <FormControl type="password" />
           </FormGroup>
           {' '}
-          <Button type="submit">
-            Sign In
-          </Button>
+          <Button type="submit"><Link to={'/NewDeck'}>Sign In</Link></Button>
         </Form>
     );
   }

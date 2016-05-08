@@ -214,27 +214,33 @@ module.exports = {
 
 	},
 
-	budgetTable : function(objRaw, objRaw2, objRaw3){
+	budgetTable : function(objRaw, totsGlobalVar,objRaw2, objRaw3){
 		var renda = [];
 		// consultants
 		var obj = this.objOrg(objRaw)
 		this.spreadElements(renda, obj, "expenseName", "amount");
-		var monthlies = this.sumMonthlies(renda, obj, "expenseName", "amount");
+		totsGlobalVar = this.sumMonthlies(renda, obj, "expenseName", "amount");
+
+		// totsGlobalVar = this.arrOp ( totsGlobalVar, monthlies, "add" );
 		// ops
-		if(objRaw2){
-			var obj2 = this.objOrg(objRaw2)
-			this.spreadElements(renda, obj2, "expenseName", "amount");
-			var monthlies2 = this.sumMonthlies(renda, obj2, "expenseName", "amount");
-			// whatever
-			if(objRaw3){
-				var obj3 = this.objOrg(objRaw3)
-				this.spreadElements(renda, obj3, "expenseName", "amount");
-				var monthlies3 = this.sumMonthlies(renda, obj3, "expenseName", "amount");
-			}
-		}
+		// if(objRaw2){
+		// 	var obj2 = this.objOrg(objRaw2)
+		// 	this.spreadElements(renda, obj2, "expenseName", "amount");
+		// 	var monthlies2 = this.sumMonthlies(renda, obj2, "expenseName", "amount");
+		// 	// whatever
+		// 	if(objRaw3){
+		// 		var obj3 = this.objOrg(objRaw3)
+		// 		this.spreadElements(renda, obj3, "expenseName", "amount");
+		// 		var monthlies3 = this.sumMonthlies(renda, obj3, "expenseName", "amount");
+		// 	}
+		// }
 		return renda;
 	},
 
+	addAllBudgetTypes : function(AofABudgetTots, consultants, ops, capex){
+		AofABudgetTots.push( arrOp(arrOp(arrOp(headcount, consultants, "add"), ops, "add"), capex, "add") );
+		return AofABudgetTots;
+	},
 
 	small : function(arr, legendLeft){
 		var legend = [legendLeft,
@@ -260,10 +266,10 @@ module.exports = {
 			return obj;
 		},
 
-		table : function(AofA, param2){
+		table : function(AofA, legend){
 						var arr = [];
 						for(var i=0; i < AofA.length; i++){
-							arr.push( this.small(AofA[i], param2) )
+							arr.push( this.small(AofA[i], legend) )
 							}
 							return arr;
 						}

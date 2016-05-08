@@ -7,7 +7,11 @@ import { Grid } from 'react-bootstrap';
 
 
 const ShowDeck = React.createClass({
-
+  headcountTots = [],
+  budgetTotsConsltants : [],
+  budgetTotsOps : [],
+  budgetTotsCapex : [],
+  
   priceFormatter : function (cell, row) {
     return `<i class='glyphicon glyphicon-usd'></i> ${cell}`;
   },

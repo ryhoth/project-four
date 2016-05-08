@@ -23,6 +23,13 @@ const ShowDeck = React.createClass({
 		let renderOperations;
 		let renderCapEx;
 
+    if (this.props.employeeData){
+      renderEmployee = xls.table(xls.headCountTable(this.props.employeeData), "Employees");
+      // renderEmployee = xls.headCountTable(this.props.employeeData);
+      // console.log("this is the employeeData in show deck",this.props.employeeData);
+      // console.log("this is renderEmployee consultants after headCountTable", renderEmployee);
+      };
+
 		// renderBudget = this.tabling(this.budgetTable(this.props.budgetData[0]["consultants"], this.props.budgetData[0]["operations"], this.props.budgetData[0]["capEx"]));
 		if (this.props.budgetData){
       renderConsultants = xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants")

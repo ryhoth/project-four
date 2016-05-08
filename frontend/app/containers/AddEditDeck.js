@@ -352,29 +352,29 @@ const AddEditDeck = React.createClass({
   saveBudgetData: function () {
     this.budgetData.push({
       consultants : {
-        finance: parseInt(this.state.finance),
-        legal: parseInt(this.state.legal),
-        tech: parseInt(this.state.tech),
-        contentEditorial: parseInt(this.state.contentEditorial),
-        design: parseInt(this.state.design),
-        marketing: parseInt(this.state.marketing),
-        other: parseInt(this.state.other)
+        "Finance": parseInt(this.state.finance),
+        "Legal": parseInt(this.state.legal),
+        "Tech": parseInt(this.state.tech),
+        "Content & Editorial": parseInt(this.state.contentEditorial),
+        "Design": parseInt(this.state.design),
+        "Marketing": parseInt(this.state.marketing),
+        "Other": parseInt(this.state.other)
       },
       operations : {
-        rent: parseInt(this.state.rent),
-        internet: parseInt(this.state.internet),
-        saas: parseInt(this.state.saas),
-        softwareLicense: parseInt(this.state.softwareLicense),
-        equipment: parseInt(this.state.equipment),
-        officeSupplies: parseInt(this.state.officeSupplies),
-        travel: parseInt(this.state.travel),
-        ConfTrade: parseInt(this.state.ConfTrade),
-        duesAndSubscription: parseInt(this.state.duesAndSubscription),
-        insurance: parseInt(this.state.insurance),
-        pettyCash: parseInt(this.state.pettyCash),
+        "Rent": parseInt(this.state.rent),
+        "Internet": parseInt(this.state.internet),
+        "SaaS": parseInt(this.state.saas),
+        "Software & License Renewal": parseInt(this.state.softwareLicense),
+        "Equipment (Hardware)": parseInt(this.state.equipment),
+        "Office Supplies": parseInt(this.state.officeSupplies),
+        "Travel": parseInt(this.state.travel),
+        "Conference & Tradeshows": parseInt(this.state.ConfTrade),
+        "Dues & Subscriptions": parseInt(this.state.duesAndSubscription),
+        "Insurance": parseInt(this.state.insurance),
+        "Petty Cash & Entertainment": parseInt(this.state.pettyCash),
       },
       capEx : {
-        capEx: parseInt(this.state.capEx)
+        "Capital Expenses": parseInt(this.state.capEx)
       }
     });
     console.log("budgetData:", this.budgetData);

@@ -114,7 +114,7 @@ module.exports = {
 				onerow.push(this.sumRow(objectWithMembers, key));
 			}
 			var completeRow = this.addsSumToEndArray(onerow);
-			onerow.unshift("Salary");
+			onerow.unshift("Total");
 			RowArrayToPush.push(onerow);
 			return onerow;
 	},

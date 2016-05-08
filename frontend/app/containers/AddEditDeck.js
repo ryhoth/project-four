@@ -14,18 +14,36 @@ import Revenue5 from '../components/UserInput/Revenue5';
 import Revenue6 from '../components/UserInput/Revenue6';
 import Revenue7 from '../components/UserInput/Revenue7';
 import Revenue8 from '../components/UserInput/Revenue8';
-import Revenue9 from '../components/UserInput/Revenue9';
-import Revenue10 from '../components/UserInput/Revenue10';
-import Revenue11 from '../components/UserInput/Revenue11';
-import Revenue12 from '../components/UserInput/Revenue12';
-import Revenue13 from '../components/UserInput/Revenue13';
+import ShowDeck from './ShowDeck';
 
 
-import { ButtonToolbar, Button, Modal } from 'react-bootstrap';
+
+import { ButtonToolbar, Button, Modal, Grid } from 'react-bootstrap';
 
 const AddEditDeck = React.createClass({
   getInitialState() {
     return {
+      jan: null,
+      feb: null,
+      mar: null,
+      apr: null,
+      may: null,
+      jun: null,
+      jul: null,
+      aug: null,
+      sept: null,
+      oct: null,
+      nov: null,
+      dec: null,
+
+      unitA: null,
+      eventB: null,
+      mediumC: null,
+      probOfB: null,
+      percOfC: null,
+      dollarPerPofB: null,
+      dollarPerPofC: null,
+
       emp1Display: false,
       emp2Display: false,
       bud1Display: false,
@@ -39,6 +57,7 @@ const AddEditDeck = React.createClass({
       rev5Display: false,
       rev6Display: false,
       rev7Display: false,
+      rev8Display: false,
 
       employeeCount: null,
       employeeTaxBenefits: null,
@@ -71,26 +90,7 @@ const AddEditDeck = React.createClass({
 
       capEx: null,
 
-      unitA: null,
-      eventB: null,
-      mediumC: null,
-      probOfB: null,
-      percOfC: null,
-      dollarPerPofB: null,
-      dollarPerPofC: null,
-
-      jan: null,
-      feb: null,
-      mar: null,
-      apr: null,
-      may: null,
-      jun: null,
-      jul: null,
-      aug: null,
-      sept: null,
-      oct: null,
-      nov: null,
-      dec: null
+      showDeck: false,
 
     };
   },
@@ -330,32 +330,107 @@ const AddEditDeck = React.createClass({
 
 
 // this saves the employee info and pushes it into employeeInfo array
-  employeeInfo: [],
-  saveEmployees: function () {
-    this.employeeInfo.push({
+  employeeData: [],
+  saveEmployeeGeneral: function () {
+    this.employeeData.push({
+      employeeCount: parseInt(this.state.employeeCount),
+      employeeTaxBenefits: parseInt(this.state.employeeTaxBenefits)
+    })
+  },
+  saveEmployeeData: function () {
+    this.employeeData.push({
       employeeName: this.state.employeeName,
       employeePosition: this.state.employeePosition,
-      employeeSalary: this.state.employeeSalary,
-      employeeBonus: this.state.employeeBonus,
-      employeeEquity: this.state.employeeEquity
+      employeeSalary: parseInt(this.state.employeeSalary),
+      employeeBonus: parseInt(this.state.employeeBonus),
+      employeeEquity: parseInt(this.state.employeeEquity)
     });
-    console.log("employeeInfo: ", this.employeeInfo);
+    console.log("employeeData: ", this.employeeData);
   },
+
+  budgetData: [],
+  saveBudgetData: function () {
+    this.budgetData.push({
+      consultants : {
+        finance: parseInt(this.state.finance),
+        legal: parseInt(this.state.legal),
+        tech: parseInt(this.state.tech),
+        contentEditorial: parseInt(this.state.contentEditorial),
+        design: parseInt(this.state.design),
+        marketing: parseInt(this.state.marketing),
+        other: parseInt(this.state.other)
+      },
+      operations : {
+        rent: parseInt(this.state.rent),
+        internet: parseInt(this.state.internet),
+        saas: parseInt(this.state.saas),
+        softwareLicense: parseInt(this.state.softwareLicense),
+        equipment: parseInt(this.state.equipment),
+        officeSupplies: parseInt(this.state.officeSupplies),
+        travel: parseInt(this.state.travel),
+        ConfTrade: parseInt(this.state.ConfTrade),
+        duesAndSubscription: parseInt(this.state.duesAndSubscription),
+        insurance: parseInt(this.state.insurance),
+        pettyCash: parseInt(this.state.pettyCash),
+      },
+      capEx : {
+        capEx: parseInt(this.state.capEx)
+      }
+    });
+    console.log("budgetData:", this.budgetData);
+  },
+
+  // this saves the revenue info and pushes it into revData obj
+  revData : {},
+  saveRevenueWithMonths: function (param) {
+    this.revData[param] = {
+      name: this.state[param],
+      projections:[]
+    }
+    for(let month = 0; month < 12; month++ ){
+      this.revData[param].projections.push(
+        this.state[Object.keys(this.state)[month]]
+      )
+    }
+  },
+  saveRevenueWithOutMonths: function (param) {
+    this.revData[param] = {
+      name: this.state[param]
+    }
+  console.log("revData", this.revData);
+  },
+
+  //fxn that sends all data to math.js
+  // sendToMath: function () {
+  //   // if (this.employeeData && this.budgetData && this.revData) {
+  //     this.props.grabEmployee(this.employeeData);
+  //     this.props.grabBudget(this.budgetData);
+  //     this.props.grabRevenue(this.revData);
+  //
+  //   // }
+  // },
+
 
 // this is an array where number of forms to be rendered into Headcount2 will be pushed into
   employeeQuestFormArray: [],
 
     render() {
-
+          // budgetData={this.budgetData} revData={this.revData}
+      if(this.state.showDeck) {
+        return(
+          <ShowDeck employeeData={this.employeeData} budgetData={this.budgetData} revData={this.revData} />
+        )
+      }
       // this moves on from employee questionair 1 -> 2 and calls fxn that populates the questionair form with employee count
       let onToEmployees = () => {
-        this.setState({ emp1Display: false, emp2Display: true })
+        this.setState({ emp1Display: false, emp2Display: true });
+        // this.saveEmployeeGeneral();
         employeeForms();
       }
       //this closes out questionaire and saves the data from employee questionaire into an array
-      let empTwoClose = () => {
+      let employeeClose = () => {
         this.setState({ emp2Display: false });
-        this.saveEmployees()
+        this.saveEmployeeData()
       }
       //this populates how many forms need to be in employee questionair
       let employeeForms = () => {
@@ -371,7 +446,7 @@ const AddEditDeck = React.createClass({
       }
       //this will move onto the third budget questionair *** one to three for now but change that
       let onToBudget3 = () => {
-        this.setState({ bud1Display: false, bud3Display: true })
+        this.setState({ bud1Display: false, bud3Display: true });
       }
       let onToBudget4 = () => {
         this.setState({ bud3Display: false, bud4Display: true })
@@ -379,50 +454,59 @@ const AddEditDeck = React.createClass({
       // closes budget four and saves all the state into an array with a fxn
       let budgetClose = () => {
         this.setState({ bud4Display: false });
+        this.saveBudgetData();
       }
       let onToRevenue2 = () => {
         this.setState({ rev1Display: false, rev2Display: true })
       }
       //this will move onto the third budget questionair *** one to three for now but change that
       let onToRevenue3 = () => {
-        this.setState({ rev2Display: false, rev3Display: true })
+        this.setState({ rev2Display: false, rev3Display: true });
+        this.saveRevenueWithMonths("unitA");
       }
       let onToRevenue4 = () => {
         this.setState({ rev3Display: false, rev4Display: true })
       }
       let onToRevenue5 = () => {
-        this.setState({ rev4Display: false, rev5Display: true })
+        this.setState({ rev4Display: false, rev5Display: true });
+        this.saveRevenueWithMonths("eventB");
       }
       let onToRevenue6 = () => {
         this.setState({ rev5Display: false, rev6Display: true })
       }
       let onToRevenue7 = () => {
-        this.setState({ rev6Display: false, rev7Display: true })
+        this.setState({ rev6Display: false, rev7Display: true });
+        this.saveRevenueWithMonths("mediumC");
       }
       let onToRevenue8 = () => {
-        this.setState({ rev7Display: false, rev8Display: true })
-      }
-      let onToRevenue9 = () => {
-        this.setState({ rev8Display: false, rev9Display: true })
-      }
-      let onToRevenue10 = () => {
-        this.setState({ rev9Display: false, rev10Display: true })
-      }
-      let onToRevenue11 = () => {
-        this.setState({ rev10Display: false, rev11Display: true })
-      }
-      let onToRevenue12 = () => {
-        this.setState({ rev11Display: false, rev12Display: true })
-      }
-      let onToRevenue13 = () => {
-        this.setState({ rev12Display: false, rev13Display: true })
+        this.setState({ rev7Display: false, rev8Display: true });
+        this.saveRevenueWithMonths("percOfC");
       }
       let revenueClose = () => {
-        this.setState({ rev13Display: false });
+        this.setState({ rev8Display: false });
+        this.saveRevenueWithOutMonths("dollarPerPofB");
+      }
+      let closeForm = () => {
+        this.setState({
+        emp1Display: false,
+        emp2Display: false,
+        bud1Display: false,
+        bud2Display: false,
+        bud3Display: false,
+        bud4Display: false,
+        rev1Display: false,
+        rev2Display: false,
+        rev3Display: false,
+        rev4Display: false,
+        rev5Display: false,
+        rev6Display: false,
+        rev7Display: false,
+        rev8Display: false,
+      });
       }
 
       return (
-        <div>
+        <Grid fluid>
           <ButtonToolbar>
             <Button bsStyle="primary" onClick={()=>this.setState({ emp1Display: true })}>
               Employees
@@ -433,28 +517,28 @@ const AddEditDeck = React.createClass({
             <Button bsStyle="primary" onClick={()=>this.setState({ rev1Display: true })}>
               Revenue
             </Button>
+            <Button bsStyle="success" onClick={()=>this.setState({ showDeck: true })}>
+              Submit
+            </Button>
           </ButtonToolbar>
-          <Headcount show={this.state.emp1Display} next={onToEmployees} onUpdate={this.handleFormState}/>
-          <Headcount2 show={this.state.emp2Display} next={empTwoClose} empQuestForms={this.employeeQuestFormArray} />
+          <Headcount show={this.state.emp1Display} next={onToEmployees} onUpdate={this.handleFormState} />
+          <Headcount2 show={this.state.emp2Display} next={employeeClose} empQuestForms={this.employeeQuestFormArray} />
           <Budget1 show={this.state.bud1Display} next={onToBudget3} onUpdate={this.handleFormState}/>
           <Budget3 show={this.state.bud3Display} next={onToBudget4} onUpdate={this.handleFormState}/>
           <Budget4 show={this.state.bud4Display} next={budgetClose} onUpdate={this.handleFormState}/>
           <Revenue1 show={this.state.rev1Display} next={onToRevenue2} onUpdate={this.handleFormState}/>
           <Revenue2 show={this.state.rev2Display} next={onToRevenue3} onUpdate={this.handleFormState} unitA={this.state.unitA}/>
           <Revenue3 show={this.state.rev3Display} next={onToRevenue4} onUpdate={this.handleFormState} unitA={this.state.unitA}/>
-          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
+          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} unitA={this.state.unitA} eventB={this.state.eventB}/>
           <Revenue5 show={this.state.rev5Display} next={onToRevenue6} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
           <Revenue6 show={this.state.rev6Display} next={onToRevenue7} onUpdate={this.handleFormState} unitA={this.state.unitA} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
-          <Revenue7 show={this.state.rev7Display} next={onToRevenue8} onUpdate={this.handleFormState}/>
-          <Revenue8 show={this.state.rev8Display} next={onToRevenue9} onUpdate={this.handleFormState} eventB={this.state.eventB} mediumC={this.state.mediumC} />
-          <Revenue9 show={this.state.rev9Display} next={onToRevenue10} onUpdate={this.handleFormState}/>
-          <Revenue10 show={this.state.rev10Display} next={onToRevenue11} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
-          <Revenue11 show={this.state.rev11Display} next={onToRevenue12} onUpdate={this.handleFormState}/>
-          <Revenue12 show={this.state.rev12Display} next={onToRevenue13} onUpdate={this.handleFormState}/>
-          <Revenue13 show={this.state.rev13Display} next={revenueClose} onUpdate={this.handleFormState}/>
-        </div>
+          <Revenue7 show={this.state.rev7Display} next={onToRevenue8} onUpdate={this.handleFormState} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
+          <Revenue8 show={this.state.rev8Display} next={revenueClose} onUpdate={this.handleFormState} eventB={this.state.eventB} />
+        </Grid>
       );
     }
 });
 
 export default AddEditDeck;
+
+            // <Button bsStyle="success" onClick={this.sendToMath}>

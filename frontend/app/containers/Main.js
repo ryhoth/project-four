@@ -7,8 +7,33 @@ import Navigation from '../components/Navigation';
 
 
 
-class Main extends Component {
-  render () {
+const Main = React.createClass({
+
+  // getInitialState() {
+  //   return{
+  //     employeeData: [],
+  //     budgetData: [],
+  //     revenueData: [],
+  // }
+  // },
+  //
+  // handleUpdateEmployee: function(array) {
+  //   this.setState({
+  //     employeeData: array
+  //   });
+  // },
+  // handleUpdateBudget: function(array) {
+  //   this.setState({
+  //     budgetData: array
+  //   });
+  // },
+  // handleUpdateRevenue: function(array) {
+  //   this.setState({
+  //     revenueData: array
+  //   });
+  // },
+
+  render: function () {
     return (
       <div>
         <Navigation />
@@ -16,6 +41,6 @@ class Main extends Component {
       </div>
     );
   }
-}
+});
 
 export default Main;

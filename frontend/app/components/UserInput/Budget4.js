@@ -17,7 +17,7 @@ class Budget4 extends Component {
               <ControlLabel>How much do you expect to spend on capital expenditure in year one?</ControlLabel>
                 <InputGroup>
                   <InputGroup.Addon>$</InputGroup.Addon>
-                  <FormControl name="rent" type="text" placeholder="Enter text" onChange={this.props.onUpdate} />
+                  <FormControl name="capEx" type="text" placeholder="Enter text" onChange={this.props.onUpdate} />
                 </InputGroup>
             </FormGroup>
 

@@ -43,7 +43,7 @@ const ShowDeck = React.createClass({
     return (
 			<Grid>
         <h2>Employees</h2>
-        <BootstrapTable data={ renderEmployee } striped={true} hover={true}>
+        <BootstrapTable data={ renderEmployee } striped={true} hover={true} exportCSV={ true }>
           <TableHeaderColumn width='140' dataField='Employees' isKey={ true }>Employees</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 1'>Month 1</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 2'>Month 2</TableHeaderColumn>
@@ -60,7 +60,7 @@ const ShowDeck = React.createClass({
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Total'>Total</TableHeaderColumn>
         </BootstrapTable>
         <h2>Budget</h2>
-        <BootstrapTable data={ renderConsultants } striped={true} hover={true}>
+        <BootstrapTable data={ renderConsultants } striped={true} hover={true} exportCSV={ true }>
         <TableHeaderColumn width='140' dataField='Consultants' isKey={ true }>Consultants</TableHeaderColumn>
         <TableHeaderColumn dataField='Month 1'>Month 1</TableHeaderColumn>
         <TableHeaderColumn dataField='Month 2'>Month 2</TableHeaderColumn>
@@ -77,7 +77,7 @@ const ShowDeck = React.createClass({
         <TableHeaderColumn dataField='Total'>Total</TableHeaderColumn>
         </BootstrapTable>
         <br/>
-        <BootstrapTable data={ renderOperations } striped={true} hover={true}>
+        <BootstrapTable data={ renderOperations } striped={true} hover={true} exportCSV={ true }>
         <TableHeaderColumn width='140' dataField='Operations' isKey={ true }>Operations</TableHeaderColumn>
         <TableHeaderColumn dataField='Month 1'>Month 1</TableHeaderColumn>
         <TableHeaderColumn dataField='Month 2'>Month 2</TableHeaderColumn>
@@ -94,7 +94,7 @@ const ShowDeck = React.createClass({
         <TableHeaderColumn dataField='Total'>Total</TableHeaderColumn>
         </BootstrapTable>
         <br/>
-        <BootstrapTable data={ renderCapEx } striped={true} hover={true}>
+        <BootstrapTable data={ renderCapEx } striped={true} hover={true} exportCSV={ true }>
         <TableHeaderColumn width='140' dataField='Capital Expenses' isKey={ true }>Capital Expenses</TableHeaderColumn>
         <TableHeaderColumn dataField='Month 1'>Month 1</TableHeaderColumn>
         <TableHeaderColumn dataField='Month 2'>Month 2</TableHeaderColumn>

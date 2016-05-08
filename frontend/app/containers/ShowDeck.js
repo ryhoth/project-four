@@ -16,6 +16,7 @@ const ShowDeck = React.createClass({
 
 		let renderEmployee;
 		let renderBudget;
+    let operationsBudget;
 
 		// if (this.props.employeeData){
 		// 	renderEmployee = xls.table(xls.headCountTable(this.props.employeeData), "Employees");
@@ -25,18 +26,35 @@ const ShowDeck = React.createClass({
 
 		// renderBudget = this.tabling(this.budgetTable(this.props.budgetData[0]["consultants"], this.props.budgetData[0]["operations"], this.props.budgetData[0]["capEx"]));
 
-      renderBudget = xls.budgetTable(this.props.budgetData[0]["consultants"])
-		console.log("this is the budgetData in show deck",this.props.budgetData);
-		console.log("this.props.budgetData[0]",this.props.budgetData[0]);
-		console.log("this is renderBudget consultants after budgetTable", renderBudget);
+    // renderBudget = xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants")
+    operationsBudget = xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations");
+		// console.log("this is the budgetData in show deck",this.props.budgetData);
+		// console.log("this.props.budgetData[0]",this.props.budgetData[0]);
+		// console.log("this is renderBudget consultants after budgetTable", renderBudget);
+		console.log("this is renderBudget operations after budgetTable", operationsBudget);
 
 
 
 
     return (
 			<Grid>
-
-
+      <h2>Budget</h2>
+      <BootstrapTable data={ renderBudget } striped={true} hover={true}>
+      <TableHeaderColumn dataField='Consultants' isKey={ true }>Consultants</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 1'>Month 1</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 2'>Month 2</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 3'>Month 3</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 4'>Month 4</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 5'>Month 5</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 6'>Month 6</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 7'>Month 7</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 8'>Month 8</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 9'>Month 9</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 10'>Month 10</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 11'>Month 11</TableHeaderColumn>
+      <TableHeaderColumn dataField='Month 12'>Month 12</TableHeaderColumn>
+      <TableHeaderColumn dataField='Total'>Total</TableHeaderColumn>
+      </BootstrapTable>
 			</Grid>
     );
   }
@@ -63,22 +81,6 @@ export default ShowDeck;
 //   <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Total'>Total</TableHeaderColumn>
 // </BootstrapTable>
 
-// <h2>Budget</h2>
-// <BootstrapTable data={ renderBudget } striped={true} hover={true}>
-// <TableHeaderColumn dataField='Month 1' isKey={ true }>Month 1</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 2'>Month 2</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 3'>Month 3</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 4'>Month 4</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 5'>Month 5</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 6'>Month 6</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 7'>Month 7</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 8'>Month 8</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 9'>Month 9</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 10'>Month 10</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 11'>Month 11</TableHeaderColumn>
-// <TableHeaderColumn dataField='Month 12'>Month 12</TableHeaderColumn>
-// <TableHeaderColumn dataField='Total'>Total</TableHeaderColumn>
-// </BootstrapTable>
 
 
 

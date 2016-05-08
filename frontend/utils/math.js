@@ -343,9 +343,9 @@ var budgetData = [
 		dollarPerPofB:{
 					name:"DollarPerP(C)",
 					projections:[1,1,2,3,4,4]
-		``		},
+			},
 		dollarPerPofC:{
 					name:"DollarPerP(C)",
 					projections:[1,1,2,3,4,4]
-		``		},
+		},
 	}

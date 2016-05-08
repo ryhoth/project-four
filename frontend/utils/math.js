@@ -84,17 +84,6 @@ module.exports = {
 		return arr;
 	},
 
-	// spreadElements : function(RowArrayToPush, objectWithMembers, memberProp, key){
-	// 	for(var i = 0; i < objectWithMembers[memberProp].length; i++){
-	// 		var onerow =[];
-	// 		for(var j = 0; j < 12; j++){
-	// 			onerow.push(objectWithMembers[key][i]);
-	// 		}
-	// 		var completeRow = this.addsSumToEndArray(onerow);
-	// 		onerow.unshift(objectWithMembers[memberProp][i]);
-	// 		RowArrayToPush.push(onerow);
-	// 	}
-	// },
 	spreadElements : function(RowArrayToPush, objectWithMembers, memberProp, key){
 		for(var i = 0; i < objectWithMembers[memberProp].length; i++){
 			var onerow =[];
@@ -214,26 +203,13 @@ module.exports = {
 
 	},
 
-	budgetTable : function(objRaw, totsGlobalVar,objRaw2, objRaw3){
+	budgetTable : function(objRaw, totsGlobalVar){
 		var renda = [];
 		// consultants
 		var obj = this.objOrg(objRaw)
 		this.spreadElements(renda, obj, "expenseName", "amount");
 		totsGlobalVar = this.sumMonthlies(renda, obj, "expenseName", "amount");
 
-		// totsGlobalVar = this.arrOp ( totsGlobalVar, monthlies, "add" );
-		// ops
-		// if(objRaw2){
-		// 	var obj2 = this.objOrg(objRaw2)
-		// 	this.spreadElements(renda, obj2, "expenseName", "amount");
-		// 	var monthlies2 = this.sumMonthlies(renda, obj2, "expenseName", "amount");
-		// 	// whatever
-		// 	if(objRaw3){
-		// 		var obj3 = this.objOrg(objRaw3)
-		// 		this.spreadElements(renda, obj3, "expenseName", "amount");
-		// 		var monthlies3 = this.sumMonthlies(renda, obj3, "expenseName", "amount");
-		// 	}
-		// }
 		return renda;
 	},
 
@@ -355,3 +331,18 @@ var budgetData = [
 					projections:[1,1,2,3,4,4]
 		},
 	}
+
+	// headcouttable stuff
+	// totsGlobalVar = this.arrOp ( totsGlobalVar, monthlies, "add" );
+	// ops
+	// if(objRaw2){
+	// 	var obj2 = this.objOrg(objRaw2)
+	// 	this.spreadElements(renda, obj2, "expenseName", "amount");
+	// 	var monthlies2 = this.sumMonthlies(renda, obj2, "expenseName", "amount");
+	// 	// whatever
+	// 	if(objRaw3){
+	// 		var obj3 = this.objOrg(objRaw3)
+	// 		this.spreadElements(renda, obj3, "expenseName", "amount");
+	// 		var monthlies3 = this.sumMonthlies(renda, obj3, "expenseName", "amount");
+	// 	}
+	// }

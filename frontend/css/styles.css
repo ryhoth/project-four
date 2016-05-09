@@ -3,5 +3,13 @@ body {
 }
 
 .table {
-    background-color: beige;
+  background-color: #f5f5dc;
+}
+
+.table-title {
+  color: #e7e7e7;
+}
+
+.about {
+  color: #e7e7e7;
 }

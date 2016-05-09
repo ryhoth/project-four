@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Modal, FormGroup, ControlLabel, FormControl, Button, InputGroup } from 'react-bootstrap';
+
 
 const About = React.createClass({
 
@@ -6,8 +8,10 @@ const About = React.createClass({
   render: function() {
 
     return (
-      <div>
-        <h1>ABOUT PAGE</h1>
+      <div className="about">
+        <h2>
+          What is Fox Deck?
+        </h2>
       </div>
     );
   }

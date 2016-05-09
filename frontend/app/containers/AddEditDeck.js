@@ -39,9 +39,8 @@ const AddEditDeck = React.createClass({
       unitA: null,
       eventB: null,
       mediumC: null,
-      probOfB: null,
-      percOfC: null,
-      dollarPerPofB: null,
+      probOfB: "probOfB",
+      dollarPerPofB: "dollarPerPofB",
       dollarPerPofC: null,
 
       emp1Display: false,
@@ -250,9 +249,9 @@ const AddEditDeck = React.createClass({
           probOfB: e.target.value
         })
         break;
-      case "percOfC":
+      case "probOfB":
         this.setState({
-          percOfC: e.target.value
+          probOfB: e.target.value
         })
         break;
       case "dollarPerPofB":
@@ -392,13 +391,14 @@ const AddEditDeck = React.createClass({
         parseInt(this.state[Object.keys(this.state)[month]])
       )
     }
+      console.log("revData", this.revData);
   },
-  saveRevenueWithOutMonths: function (param) {
-    this.revData[param] = {
-      name: this.state[param]
-    }
-  console.log("revData", this.revData);
-  },
+  // saveRevenueWithOutMonths: function (param) {
+  //   this.revData[param] = {
+  //     name: this.state[param]
+  //   }
+  // console.log("revData", this.revData);
+  // },
 
   //fxn that sends all data to math.js
   // sendToMath: function () {
@@ -480,11 +480,11 @@ const AddEditDeck = React.createClass({
       }
       let onToRevenue8 = () => {
         this.setState({ rev7Display: false, rev8Display: true });
-        this.saveRevenueWithMonths("percOfC");
+        this.saveRevenueWithMonths("probOfB");
       }
       let revenueClose = () => {
         this.setState({ rev8Display: false });
-        this.saveRevenueWithOutMonths("dollarPerPofB");
+        this.saveRevenueWithMonths("dollarPerPofB");
       }
       let closeForm = () => {
         this.setState({

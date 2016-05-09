@@ -347,6 +347,8 @@ module.exports = {
 					arr.push(probOfEvent);
 
 					var dollPerB = this.makeRevRow(obj[0]["dollarPerPofB"])
+					var text4 = "Dollars / Profitable " + this.revRowName(obj[0]["eventB"]);
+					dollPerB.shift().unshift(text4);
 						arr.push(dollPerB);
 
 

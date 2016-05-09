@@ -205,7 +205,7 @@ module.exports = {
 				case "divide":
 					for(var h = 0 ; h < arr1.length; h++){
 						if (typeof arr1[h] === "number" ){
-							arrayPlaceholder.push(arr1[h] * singleNum);
+							arrayPlaceholder.push(arr1[h] / singleNum);
 						}
 					}
 					return arrayPlaceholder;

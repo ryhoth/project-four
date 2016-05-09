@@ -51,8 +51,7 @@ const ShowDeck = React.createClass({
 
 
     if (this.props.revData){
-      console.log("Rev data yo!", this.props.revData);
-      console.log("employeeInputOrganize", xls.employeeInputOrganize(this.props.revData));
+      console.log("revTable", xls.revTable(this.props.revData));
       };
 
 

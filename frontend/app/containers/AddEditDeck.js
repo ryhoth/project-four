@@ -380,36 +380,26 @@ const AddEditDeck = React.createClass({
   },
 
   // this saves the revenue info and pushes it into revData obj
-  revData : {},
+  revData : [{}],
   saveRevenueWithMonths: function (param) {
-    this.revData[param] = {
+    this.revData[0][param] = {
       name: this.state[param],
       projections:[]
     }
     for(let month = 0; month < 12; month++ ){
-      this.revData[param].projections.push(
+      this.revData[0][param].projections.push(
         parseInt(this.state[Object.keys(this.state)[month]])
       )
     }
       console.log("revData", this.revData);
   },
+
   // saveRevenueWithOutMonths: function (param) {
   //   this.revData[param] = {
   //     name: this.state[param]
   //   }
   // console.log("revData", this.revData);
   // },
-
-  //fxn that sends all data to math.js
-  // sendToMath: function () {
-  //   // if (this.employeeData && this.budgetData && this.revData) {
-  //     this.props.grabEmployee(this.employeeData);
-  //     this.props.grabBudget(this.budgetData);
-  //     this.props.grabRevenue(this.revData);
-  //
-  //   // }
-  // },
-
 
 // this is an array where number of forms to be rendered into Headcount2 will be pushed into
   employeeQuestFormArray: [],

@@ -381,23 +381,28 @@ const AddEditDeck = React.createClass({
   },
 
   // this saves the revenue info and pushes it into revData obj
-  revData : {},
+  revData : [{}],
   saveRevenueWithMonths: function (param) {
-    this.revData[param] = {
+    this.revData[0][param] = {
       name: this.state[param],
       projections:[]
     }
     for(let month = 0; month < 12; month++ ){
-      this.revData[param].projections.push(
+      this.revData[0][param].projections.push(
         parseInt(this.state[Object.keys(this.state)[month]])
       )
     }
   },
   saveRevenueWithOutMonths: function (param) {
-    this.revData[param] = {
-      name: this.state[param]
+    var arr = [];
+    for(var i=0; i < 12; i++){
+      arr[i] = parseInt(this.state[param]);
     }
-  console.log("revData", this.revData);
+    this.revData[0][param] = {
+      name: "dollarPerPofB",
+      projections: arr
+    }
+  console.log("revData in AddEditDeck", this.revData[0]);
   },
 
   //fxn that sends all data to math.js

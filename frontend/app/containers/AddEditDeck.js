@@ -39,9 +39,8 @@ const AddEditDeck = React.createClass({
       unitA: null,
       eventB: null,
       mediumC: null,
-      probOfB: null,
-      percOfC: null,
-      dollarPerPofB: null,
+      probOfB: "probOfB",
+      dollarPerPofB: "dollarPerPofB",
       dollarPerPofC: null,
 
       emp1Display: false,
@@ -232,17 +231,17 @@ const AddEditDeck = React.createClass({
         break;
       case "unitA":
         this.setState({
-          unitA: e.target.value
+          unitA: e.target.value.toLowerCase()
         })
         break;
       case "eventB":
         this.setState({
-          eventB: e.target.value
+          eventB: e.target.value.toLowerCase()
         })
         break;
       case "mediumC":
         this.setState({
-          mediumC: e.target.value
+          mediumC: e.target.value.toLowerCase()
         })
         break;
       case "probOfB":
@@ -250,9 +249,9 @@ const AddEditDeck = React.createClass({
           probOfB: e.target.value
         })
         break;
-      case "percOfC":
+      case "probOfB":
         this.setState({
-          percOfC: e.target.value
+          probOfB: e.target.value
         })
         break;
       case "dollarPerPofB":
@@ -352,29 +351,29 @@ const AddEditDeck = React.createClass({
   saveBudgetData: function () {
     this.budgetData.push({
       consultants : {
-        "finance": parseInt(this.state.finance),
-        legal: parseInt(this.state.legal),
-        tech: parseInt(this.state.tech),
-        "content Editorial": parseInt(this.state.contentEditorial),
-        design: parseInt(this.state.design),
-        marketing: parseInt(this.state.marketing),
-        other: parseInt(this.state.other)
+        "Finance": parseInt(this.state.finance),
+        "Legal": parseInt(this.state.legal),
+        "Technology": parseInt(this.state.tech),
+        "Content & Editorial": parseInt(this.state.contentEditorial),
+        "Design": parseInt(this.state.design),
+        "Marketing": parseInt(this.state.marketing),
+        "Other": parseInt(this.state.other)
       },
       operations : {
-        rent: parseInt(this.state.rent),
-        internet: parseInt(this.state.internet),
-        saas: parseInt(this.state.saas),
-        softwareLicense: parseInt(this.state.softwareLicense),
-        equipment: parseInt(this.state.equipment),
-        officeSupplies: parseInt(this.state.officeSupplies),
-        travel: parseInt(this.state.travel),
-        ConfTrade: parseInt(this.state.ConfTrade),
-        duesAndSubscription: parseInt(this.state.duesAndSubscription),
-        insurance: parseInt(this.state.insurance),
-        pettyCash: parseInt(this.state.pettyCash),
+        "Rent": parseInt(this.state.rent),
+        "Internet": parseInt(this.state.internet),
+        "SaaS": parseInt(this.state.saas),
+        "Software Licenses": parseInt(this.state.softwareLicense),
+        "Equipment (Hardware)": parseInt(this.state.equipment),
+        "Office Supplies": parseInt(this.state.officeSupplies),
+        "Travel": parseInt(this.state.travel),
+        "Conference & Tradeshows": parseInt(this.state.ConfTrade),
+        "Dues & Subscriptions": parseInt(this.state.duesAndSubscription),
+        "Insurance": parseInt(this.state.insurance),
+        "Petty Cash & Entertainment": parseInt(this.state.pettyCash),
       },
       capEx : {
-        capEx: parseInt(this.state.capEx)
+        "Capital Expenses": parseInt(this.state.capEx)
       }
     });
     console.log("budgetData:", this.budgetData);
@@ -392,29 +391,15 @@ const AddEditDeck = React.createClass({
         parseInt(this.state[Object.keys(this.state)[month]])
       )
     }
-  },
-  saveRevenueWithOutMonths: function (param) {
-    var arr = [];
-    for(var i=0; i < 12; i++){
-      arr[i] = parseInt(this.state[param]);
-    }
-    this.revData[0][param] = {
-      name: "dollarPerPofB",
-      projections: arr
-    }
-  console.log("revData in AddEditDeck", this.revData[0]);
+      // console.log("revData", this.revData);
   },
 
-  //fxn that sends all data to math.js
-  // sendToMath: function () {
-  //   // if (this.employeeData && this.budgetData && this.revData) {
-  //     this.props.grabEmployee(this.employeeData);
-  //     this.props.grabBudget(this.budgetData);
-  //     this.props.grabRevenue(this.revData);
-  //
-  //   // }
+  // saveRevenueWithOutMonths: function (param) {
+  //   this.revData[param] = {
+  //     name: this.state[param]
+  //   }
+  // console.log("revData", this.revData);
   // },
-
 
 // this is an array where number of forms to be rendered into Headcount2 will be pushed into
   employeeQuestFormArray: [],
@@ -485,11 +470,11 @@ const AddEditDeck = React.createClass({
       }
       let onToRevenue8 = () => {
         this.setState({ rev7Display: false, rev8Display: true });
-        this.saveRevenueWithMonths("percOfC");
+        this.saveRevenueWithMonths("probOfB");
       }
       let revenueClose = () => {
         this.setState({ rev8Display: false });
-        this.saveRevenueWithOutMonths("dollarPerPofB");
+        this.saveRevenueWithMonths("dollarPerPofB");
       }
       let closeForm = () => {
         this.setState({

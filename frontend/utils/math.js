@@ -275,13 +275,6 @@ module.exports = {
 			return arr;
 		},
 
-			makeRevRow : function (obj){
-				var arr = [];
-				arr = obj[Object.keys(obj)[1]];
-				arr.unshift(obj[Object.keys(obj)[0]]);
-				console.log(arr);
-				return arr;
-		},
 
 		small : function(arr, legendLeft){
 			var legend = [legendLeft,
@@ -340,15 +333,18 @@ module.exports = {
 
 					var eventPerUnitbeta = this.makeRevRow(obj[0]["eventB"], textAfter);
 					var	eventPerUnit = this.addsSumToEndArray(eventPerUnitbeta)
-						arr.push(eventPerUnit)
+					arr.push(eventPerUnit)
 
 					var events = this.arrOp(unit, eventPerUnit, "multiply");
 					var text2 = this.revRowName(obj[0]["eventB"])+ "s"
 						events.unshift(text2)
 						arr.push(events)
 
-					var probOfEvent = this.makeRevRow(obj[0]["probOfB"])
-						arr.push(probOfEvent);
+					var probOfEventbeta = this.makeRevRow(obj[0]["probOfB"]);
+					var probOfEvent = this.arrOpSingle(probOfEventbeta, 100, "divide");
+					var text3 = "Propability of Profitable" + this.revRowName(obj[0]["eventB"])
+					probOfEvent.unshift(text3)
+					arr.push(probOfEvent);
 
 					var dollPerB = this.makeRevRow(obj[0]["dollarPerPofB"])
 						arr.push(dollPerB);

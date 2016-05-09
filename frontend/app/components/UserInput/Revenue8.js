@@ -14,7 +14,7 @@ class Revenue10 extends Component {
         <Modal.Body>
           <form>
             <FormGroup controlId="formControlsText">
-              <ControlLabel>How much will you be paid per profitable {this.props.eventB}?</ControlLabel>
+              <ControlLabel>How much will you be paid per profitable {this.props.eventB2}?</ControlLabel>
                 <FormGroup controlId="formControlsText">
                   <ControlLabel>January</ControlLabel>
                   <InputGroup>

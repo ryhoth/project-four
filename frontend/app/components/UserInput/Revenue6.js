@@ -15,7 +15,7 @@ class Revenue6 extends Component {
         <Modal.Body>
           <form>
             <FormGroup controlId="formControlsText">
-              <ControlLabel>What is the probability that your {this.props.unitA} {this.props.eventB}ing will lead to the {this.props.mediumC} generating revenue in:</ControlLabel>
+              <ControlLabel>What is the probability that your {this.props.unitA2} {this.props.eventB2}ing will lead to the {this.props.mediumC2} generating revenue in:</ControlLabel>
 
               <FormGroup controlId="formControlsText">
                 <ControlLabel>January</ControlLabel>

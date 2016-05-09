@@ -14,7 +14,7 @@ class Revenue4 extends Component {
         <Modal.Body>
           <form>
             <FormGroup controlId="formControlsSelect">
-              <ControlLabel>How many {this.props.eventB}s per {this.props.unitA} do you expect in:</ControlLabel>
+              <ControlLabel>How many {this.props.eventB2}s per {this.props.unitA2} do you expect in:</ControlLabel>
 
                 <FormGroup controlId="formControlsText">
                   <ControlLabel>January</ControlLabel>

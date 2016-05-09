@@ -39,6 +39,9 @@ const AddEditDeck = React.createClass({
       unitA: null,
       eventB: null,
       mediumC: null,
+      unitA2: null,
+      eventB2: null,
+      mediumC2: null,
       probOfB: "probOfB",
       dollarPerPofB: "dollarPerPofB",
       dollarPerPofC: null,
@@ -231,17 +234,20 @@ const AddEditDeck = React.createClass({
         break;
       case "unitA":
         this.setState({
-          unitA: e.target.value.toLowerCase()
+          unitA: e.target.value,
+          unitA2: e.target.value.toLowerCase()
         })
         break;
       case "eventB":
         this.setState({
-          eventB: e.target.value.toLowerCase()
+          eventB: e.target.value,
+          eventB2: e.target.value.toLowerCase()
         })
         break;
       case "mediumC":
         this.setState({
-          mediumC: e.target.value.toLowerCase()
+          mediumC: e.target.value,
+          mediumC2: e.target.value.toLowerCase()
         })
         break;
       case "probOfB":
@@ -517,13 +523,13 @@ const AddEditDeck = React.createClass({
           <Budget3 show={this.state.bud3Display} next={onToBudget4} onUpdate={this.handleFormState}/>
           <Budget4 show={this.state.bud4Display} next={budgetClose} onUpdate={this.handleFormState}/>
           <Revenue1 show={this.state.rev1Display} next={onToRevenue2} onUpdate={this.handleFormState}/>
-          <Revenue2 show={this.state.rev2Display} next={onToRevenue3} onUpdate={this.handleFormState} unitA={this.state.unitA}/>
-          <Revenue3 show={this.state.rev3Display} next={onToRevenue4} onUpdate={this.handleFormState} unitA={this.state.unitA}/>
-          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} unitA={this.state.unitA} eventB={this.state.eventB}/>
-          <Revenue5 show={this.state.rev5Display} next={onToRevenue6} onUpdate={this.handleFormState} eventB={this.state.eventB}/>
-          <Revenue6 show={this.state.rev6Display} next={onToRevenue7} onUpdate={this.handleFormState} unitA={this.state.unitA} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
-          <Revenue7 show={this.state.rev7Display} next={onToRevenue8} onUpdate={this.handleFormState} eventB={this.state.eventB} mediumC={this.state.mediumC}/>
-          <Revenue8 show={this.state.rev8Display} next={revenueClose} onUpdate={this.handleFormState} eventB={this.state.eventB} />
+          <Revenue2 show={this.state.rev2Display} next={onToRevenue3} onUpdate={this.handleFormState} unitA2={this.state.unitA2}/>
+          <Revenue3 show={this.state.rev3Display} next={onToRevenue4} onUpdate={this.handleFormState} unitA2={this.state.unitA2}/>
+          <Revenue4 show={this.state.rev4Display} next={onToRevenue5} onUpdate={this.handleFormState} unitA2={this.state.unitA2} eventB2={this.state.eventB2}/>
+          <Revenue5 show={this.state.rev5Display} next={onToRevenue6} onUpdate={this.handleFormState} eventB2={this.state.eventB2}/>
+          <Revenue6 show={this.state.rev6Display} next={onToRevenue7} onUpdate={this.handleFormState} unitA2={this.state.unitA2} eventB2={this.state.eventB2} mediumC2={this.state.mediumC2}/>
+          <Revenue7 show={this.state.rev7Display} next={onToRevenue8} onUpdate={this.handleFormState} eventB2={this.state.eventB2} mediumC2={this.state.mediumC2}/>
+          <Revenue8 show={this.state.rev8Display} next={revenueClose} onUpdate={this.handleFormState} eventB2={this.state.eventB2} />
         </Grid>
       );
     }

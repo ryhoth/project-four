@@ -14,7 +14,7 @@ class Revenue3 extends Component {
         <Modal.Body>
           <form>
             <FormGroup controlId="formControlsText">
-              <ControlLabel>What is the event in which your business will gain from your {this.props.unitA}?</ControlLabel>
+              <ControlLabel>What is the event in which your business will gain from your {this.props.unitA2}?</ControlLabel>
               <FormControl name="eventB" type="text" placeholder="Field run, page visit, trail/demo..." onChange={this.props.onUpdate} />
             </FormGroup>
           </form>

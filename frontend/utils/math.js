@@ -339,9 +339,15 @@ module.exports = {
 					var text2 = this.revRowName(obj[0]["eventB"])+ "s"
 						events.unshift(text2)
 						arr.push(events)
+					//
+					// var probOfEventbeta = this.makeRevRow(obj[0]["probOfB"]);
+					// var probOfEvent = this.arrOpSingle(probOfEventbeta, 100, "divide");
+					// 	arr.push(probOfEvent);
 
 					var probOfEventbeta = this.makeRevRow(obj[0]["probOfB"]);
 					var probOfEvent = this.arrOpSingle(probOfEventbeta, 100, "divide");
+					var text3 = "Propability of Profitable " + this.revRowName(obj[0]["eventB"])
+						probOfEvent.unshift(text3)
 						arr.push(probOfEvent);
 
 					var dollPerB = this.makeRevRow(obj[0]["dollarPerPofB"])

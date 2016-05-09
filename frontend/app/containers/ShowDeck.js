@@ -146,7 +146,7 @@ const ShowDeck = React.createClass({
         </BootstrapTable>
         <h2 className="table-title">Revenue</h2>
         <BootstrapTable data={ this.state.renderRev } striped={true} hover={true} trClassName="table" exportCSV={ true }>
-          <TableHeaderColumn width='140' dataField='Revenues' isKey={ true }>Revenues</TableHeaderColumn>
+          <TableHeaderColumn width='240' dataField='Revenues' isKey={ true }>Revenues</TableHeaderColumn>
           <TableHeaderColumn width='80' dataField='Month 1'>Month 1</TableHeaderColumn>
           <TableHeaderColumn width='80' dataField='Month 2'>Month 2</TableHeaderColumn>
           <TableHeaderColumn width='80' dataField='Month 3'>Month 3</TableHeaderColumn>

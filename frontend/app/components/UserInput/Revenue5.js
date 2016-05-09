@@ -14,7 +14,7 @@ class Revenue5 extends Component {
         <Modal.Body>
           <form>
             <FormGroup controlId="formControlsText">
-              <ControlLabel>What is the medium in which your business will profit from {this.props.eventB}?</ControlLabel>
+              <ControlLabel>What is the medium in which your business will profit from {this.props.eventB2}?</ControlLabel>
               <FormControl name="mediumC" type="text" placeholder="Field, website, software..." onChange={this.props.onUpdate} />
             </FormGroup>
           </form>

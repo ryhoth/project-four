@@ -12,11 +12,6 @@ import About from '../containers/About';
 
 import Welcome from '../components/Welcome';
 
-
-
-
-
-
 const Routes = (
   <Router history={browserHistory}>
 

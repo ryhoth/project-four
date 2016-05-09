@@ -129,7 +129,7 @@ module.exports = {
 					}
 				}
 				return arrayPlaceholder;
-			case "sbutract":
+			case "subtract":
 				for(var j=0; j < arr1.length; j++){
 					if (typeof arr1[j] === "number" ){
 						arrayPlaceholder.push(arr1[j] - arr2[j]);

@@ -24,5 +24,8 @@ module.exports = {
       loaders: ['babel-loader'],
       include: path.join(__dirname, 'app')
     }]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   }
 };

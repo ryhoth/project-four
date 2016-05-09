@@ -232,17 +232,17 @@ const AddEditDeck = React.createClass({
         break;
       case "unitA":
         this.setState({
-          unitA: e.target.value
+          unitA: e.target.value.toLowerCase()
         })
         break;
       case "eventB":
         this.setState({
-          eventB: e.target.value
+          eventB: e.target.value.toLowerCase()
         })
         break;
       case "mediumC":
         this.setState({
-          mediumC: e.target.value
+          mediumC: e.target.value.toLowerCase()
         })
         break;
       case "probOfB":
@@ -354,7 +354,7 @@ const AddEditDeck = React.createClass({
       consultants : {
         "Finance": parseInt(this.state.finance),
         "Legal": parseInt(this.state.legal),
-        "Tech": parseInt(this.state.tech),
+        "Technology": parseInt(this.state.tech),
         "Content & Editorial": parseInt(this.state.contentEditorial),
         "Design": parseInt(this.state.design),
         "Marketing": parseInt(this.state.marketing),
@@ -364,7 +364,7 @@ const AddEditDeck = React.createClass({
         "Rent": parseInt(this.state.rent),
         "Internet": parseInt(this.state.internet),
         "SaaS": parseInt(this.state.saas),
-        "Software & License Renewal": parseInt(this.state.softwareLicense),
+        "Software Licenses": parseInt(this.state.softwareLicense),
         "Equipment (Hardware)": parseInt(this.state.equipment),
         "Office Supplies": parseInt(this.state.officeSupplies),
         "Travel": parseInt(this.state.travel),

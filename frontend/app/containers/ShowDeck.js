@@ -24,56 +24,6 @@ const ShowDeck = React.createClass({
 
   render: function() {
 
-    // let headcountTots = [];
-    // let budgetTotsConsltants = [];
-    // let budgetTotsOperations = [];
-    // let budgetTotsCapex = [];
-    // let budgetTotsAll = [];
-    //
-		// let renderEmployee;
-		// let renderConsultants;
-		// let renderOperations;
-		// let renderCapEx;
-    //
-    // let renderRev;
-
-    // if (this.props.employeeData && this.props.budgetData && this.props.revData){
-    //   this.setState({
-    //     renderEmployee: xls.table(xls.headCountTable(this.props.employeeData), "Employees"),
-    //     renderConsultants: xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants"),
-    //     renderOperations: xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations"),
-    //     renderCapEx: xls.table(xls.budgetTable(this.props.budgetData[0]["capEx"]), "Capital Expenses"),
-    //     renderRev: xls.table(xls.revTable(this.props.revData), "Revenues"),
-    //   })
-      // renderEmployee = xls.table(xls.headCountTable(this.props.employeeData), "Employees");
-      //
-      // renderConsultants = xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants")
-      // renderOperations = xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations")
-      // renderCapEx = xls.table(xls.budgetTable(this.props.budgetData[0]["capEx"]), "Capital Expenses")
-      //
-      // renderRev = xls.table(xls.revTable(this.props.revData), "Revenues")
-      // renderEmployee = xls.headCountTable(this.props.employeeData);
-      // console.log("this is the employeeData in show deck",this.props.employeeData);
-      // console.log("this is renderEmployee consultants after headCountTable", renderEmployee);
-      // console.log("this.props.employeeData",this.props.employeeData);
-      // };
-    //
-		// // renderBudget = this.tabling(this.budgetTable(this.props.budgetData[0]["consultants"], this.props.budgetData[0]["operations"], this.props.budgetData[0]["capEx"]));
-		// if (this.props.budgetData){
-    //   renderConsultants = xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants")
-    //   renderOperations = xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations")
-    //   renderCapEx = xls.table(xls.budgetTable(this.props.budgetData[0]["capEx"]), "Capital Expenses")
-    //
-    //   // console.log("this is the budgetData in show deck",this.props.budgetData);
-  	// 	// console.log("this.props.budgetData[0]",this.props.budgetData[0]);
-  	// 	// console.log("this.props.budgetData",this.props.budgetData);
-		// };
-		// if (this.props.revData){
-    //   renderRev = xls.table(xls.revTable(this.props.revData), "Revenues")
-    //   console.log("renderRev",renderRev);
-  	// 	console.log("this.props.revData",this.props.revData);
-		// };
-
     return (
 			<Grid>
         <h2 className="table-title">Employees</h2>

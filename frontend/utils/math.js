@@ -333,7 +333,7 @@ module.exports = {
 
 					var eventPerUnitbeta = this.makeRevRow(obj[0]["eventB"], textAfter);
 					var	eventPerUnit = this.addsSumToEndArray(eventPerUnitbeta)
-						arr.push(eventPerUnit)
+					arr.push(eventPerUnit)
 
 					var events = this.arrOp(unit, eventPerUnit, "multiply");
 					var text2 = this.revRowName(obj[0]["eventB"])+ "s"
@@ -351,7 +351,10 @@ module.exports = {
 						arr.push(probOfEvent);
 
 					var dollPerB = this.makeRevRow(obj[0]["dollarPerPofB"])
-						arr.push(dollPerB);
+					var text4 = "Dollars / Profitable " + this.revRowName(obj[0]["eventB"]);
+					dollPerB.shift();
+					dollPerB.unshift(text4);
+					arr.push(dollPerB);
 
 
 					var revenuesbeta = this.arrOpTrip(unit, probOfEvent, dollPerB, "multiply")

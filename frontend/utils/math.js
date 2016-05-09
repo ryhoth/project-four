@@ -65,7 +65,9 @@ module.exports = {
 		sumArray : function (arr){
 			var sum = 0;
 			for(var i=0; i < arr.length ; i++){
+				if(typeof arr[i] === "number"){
 				sum += arr[i];
+				}
 			}
 			return sum;
 		},
@@ -329,33 +331,36 @@ module.exports = {
 						},
 
 			revTable : function(obj){
-						var arr = [];
-						var unit = this.makeRevRow(obj[0]["unitA"]);
-							arr.push(unit)
+					var arr = [];
+					var unitbeta = this.makeRevRow(obj[0]["unitA"]);
+					var	unit = this.addsSumToEndArray(unitbeta)
+						arr.push(unit)
 
-						var textAfter = "per " + this.revRowName(obj[0]["unitA"])
+					var textAfter = "per " + this.revRowName(obj[0]["unitA"])
 
-						var eventPerUnit = this.makeRevRow(obj[0]["eventB"], textAfter);
-							arr.push(eventPerUnit)
+					var eventPerUnitbeta = this.makeRevRow(obj[0]["eventB"], textAfter);
+					var	eventPerUnit = this.addsSumToEndArray(eventPerUnitbeta)
+						arr.push(eventPerUnit)
 
-						var events = this.arrOp(unit, eventPerUnit, "multiply");
-							var text2 = this.revRowName(obj[0]["eventB"])+ "s"
-							events.unshift(text2)
-							arr.push(events)
+					var events = this.arrOp(unit, eventPerUnit, "multiply");
+					var text2 = this.revRowName(obj[0]["eventB"])+ "s"
+						events.unshift(text2)
+						arr.push(events)
 
-						var probOfEvent = this.makeRevRow(obj[0]["probOfB"])
-							arr.push(probOfEvent);
+					var probOfEvent = this.makeRevRow(obj[0]["probOfB"])
+						arr.push(probOfEvent);
 
-						var dollPerB = this.makeRevRow(obj[0]["dollarPerPofB"])
-							arr.push(dollPerB);
+					var dollPerB = this.makeRevRow(obj[0]["dollarPerPofB"])
+						arr.push(dollPerB);
 
 
-						var revenues = this.arrOpTrip(unit, probOfEvent, dollPerB, "multiply")
-							revenues.unshift("Revenues")
-							arr.push(revenues)
-							console.log(arr);
-							return arr;
-					},
+					var revenuesbeta = this.arrOpTrip(unit, probOfEvent, dollPerB, "multiply")
+						revenuesbeta.unshift("Revenues")
+					var revenues = this.addsSumToEndArray(revenuesbeta)
+						arr.push(revenues)
+						console.log(arr);
+						return arr;
+				},
 
 	}//end of export
 

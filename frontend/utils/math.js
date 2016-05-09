@@ -205,7 +205,7 @@ module.exports = {
 				case "divide":
 					for(var h = 0 ; h < arr1.length; h++){
 						if (typeof arr1[h] === "number" ){
-							arrayPlaceholder.push(arr1[h] * singleNum);
+							arrayPlaceholder.push(arr1[h] / singleNum);
 						}
 					}
 					return arrayPlaceholder;
@@ -275,13 +275,6 @@ module.exports = {
 			return arr;
 		},
 
-			makeRevRow : function (obj){
-				var arr = [];
-				arr = obj[Object.keys(obj)[1]];
-				arr.unshift(obj[Object.keys(obj)[0]]);
-				console.log(arr);
-				return arr;
-		},
 
 		small : function(arr, legendLeft){
 			var legend = [legendLeft,
@@ -347,7 +340,8 @@ module.exports = {
 						events.unshift(text2)
 						arr.push(events)
 
-					var probOfEvent = this.makeRevRow(obj[0]["probOfB"])
+					var probOfEventbeta = this.makeRevRow(obj[0]["probOfB"]);
+					var probOfEvent = this.arrOpSingle(probOfEventbeta, 100, "divide");
 						arr.push(probOfEvent);
 
 					var dollPerB = this.makeRevRow(obj[0]["dollarPerPofB"])

@@ -391,7 +391,7 @@ const AddEditDeck = React.createClass({
         parseInt(this.state[Object.keys(this.state)[month]])
       )
     }
-      console.log("revData", this.revData);
+      // console.log("revData", this.revData);
   },
 
   // saveRevenueWithOutMonths: function (param) {

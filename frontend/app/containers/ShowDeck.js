@@ -8,6 +8,15 @@ import { Grid } from 'react-bootstrap';
 
 
 const ShowDeck = React.createClass({
+  getInitialState() {
+    return {
+      renderEmployee: xls.table(xls.headCountTable(this.props.employeeData), "Employees"),
+  		renderConsultants: xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants"),
+  		renderOperations: xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations"),
+  		renderCapEx: xls.table(xls.budgetTable(this.props.budgetData[0]["capEx"]), "Capital Expenses"),
+      renderRev: xls.table(xls.revTable(this.props.revData), "Revenues"),
+    };
+  },
 
   priceFormatter : function (cell, row) {
     return `<i class='glyphicon glyphicon-usd'></i> ${cell}`;
@@ -15,48 +24,60 @@ const ShowDeck = React.createClass({
 
   render: function() {
 
-    let headcountTots = [];
-    let budgetTotsConsltants = [];
-    let budgetTotsOperations = [];
-    let budgetTotsCapex = [];
-    let budgetTotsAll = [];
+    // let headcountTots = [];
+    // let budgetTotsConsltants = [];
+    // let budgetTotsOperations = [];
+    // let budgetTotsCapex = [];
+    // let budgetTotsAll = [];
+    //
+		// let renderEmployee;
+		// let renderConsultants;
+		// let renderOperations;
+		// let renderCapEx;
+    //
+    // let renderRev;
 
-		let renderEmployee;
-		let renderConsultants;
-		let renderOperations;
-		let renderCapEx;
-
-    let renderRev;
-
-    if (this.props.employeeData){
-      renderEmployee = xls.table(xls.headCountTable(this.props.employeeData), "Employees");
-
+    // if (this.props.employeeData && this.props.budgetData && this.props.revData){
+    //   this.setState({
+    //     renderEmployee: xls.table(xls.headCountTable(this.props.employeeData), "Employees"),
+    //     renderConsultants: xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants"),
+    //     renderOperations: xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations"),
+    //     renderCapEx: xls.table(xls.budgetTable(this.props.budgetData[0]["capEx"]), "Capital Expenses"),
+    //     renderRev: xls.table(xls.revTable(this.props.revData), "Revenues"),
+    //   })
+      // renderEmployee = xls.table(xls.headCountTable(this.props.employeeData), "Employees");
+      //
+      // renderConsultants = xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants")
+      // renderOperations = xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations")
+      // renderCapEx = xls.table(xls.budgetTable(this.props.budgetData[0]["capEx"]), "Capital Expenses")
+      //
+      // renderRev = xls.table(xls.revTable(this.props.revData), "Revenues")
       // renderEmployee = xls.headCountTable(this.props.employeeData);
       // console.log("this is the employeeData in show deck",this.props.employeeData);
       // console.log("this is renderEmployee consultants after headCountTable", renderEmployee);
       // console.log("this.props.employeeData",this.props.employeeData);
-      };
-
-		// renderBudget = this.tabling(this.budgetTable(this.props.budgetData[0]["consultants"], this.props.budgetData[0]["operations"], this.props.budgetData[0]["capEx"]));
-		if (this.props.budgetData){
-      renderConsultants = xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants")
-      renderOperations = xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations")
-      renderCapEx = xls.table(xls.budgetTable(this.props.budgetData[0]["capEx"]), "Capital Expenses")
-
-      // console.log("this is the budgetData in show deck",this.props.budgetData);
-  		// console.log("this.props.budgetData[0]",this.props.budgetData[0]);
-  		// console.log("this.props.budgetData",this.props.budgetData);
-		};
-		if (this.props.revData){
-      renderRev = xls.table(xls.revTable(this.props.revData), "Revenues")
-      console.log("renderRev",renderRev);
-  		console.log("this.props.revData",this.props.revData);
-		};
+      // };
+    //
+		// // renderBudget = this.tabling(this.budgetTable(this.props.budgetData[0]["consultants"], this.props.budgetData[0]["operations"], this.props.budgetData[0]["capEx"]));
+		// if (this.props.budgetData){
+    //   renderConsultants = xls.table(xls.budgetTable(this.props.budgetData[0]["consultants"]), "Consultants")
+    //   renderOperations = xls.table(xls.budgetTable(this.props.budgetData[0]["operations"]), "Operations")
+    //   renderCapEx = xls.table(xls.budgetTable(this.props.budgetData[0]["capEx"]), "Capital Expenses")
+    //
+    //   // console.log("this is the budgetData in show deck",this.props.budgetData);
+  	// 	// console.log("this.props.budgetData[0]",this.props.budgetData[0]);
+  	// 	// console.log("this.props.budgetData",this.props.budgetData);
+		// };
+		// if (this.props.revData){
+    //   renderRev = xls.table(xls.revTable(this.props.revData), "Revenues")
+    //   console.log("renderRev",renderRev);
+  	// 	console.log("this.props.revData",this.props.revData);
+		// };
 
     return (
 			<Grid>
         <h2 className="table-title">Employees</h2>
-        <BootstrapTable data={ renderEmployee } striped={true} hover={true} trClassName="table" exportCSV={ true }>
+        <BootstrapTable data={ this.state.renderEmployee } striped={true} hover={true} trClassName="table" exportCSV={ true }>
           <TableHeaderColumn width='140' dataField='Employees' isKey={ true }>Employees</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 1'>Month 1</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 2'>Month 2</TableHeaderColumn>
@@ -73,7 +94,7 @@ const ShowDeck = React.createClass({
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Total'>Total</TableHeaderColumn>
         </BootstrapTable>
         <h2 className="table-title">Budget</h2>
-        <BootstrapTable data={ renderConsultants } striped={true} hover={true} trClassName="table" exportCSV={ true }>
+        <BootstrapTable data={ this.state.renderConsultants } striped={true} hover={true} trClassName="table" exportCSV={ true }>
           <TableHeaderColumn width='140' dataField='Consultants' isKey={ true }>Consultants</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 1'>Month 1</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 2'>Month 2</TableHeaderColumn>
@@ -90,7 +111,7 @@ const ShowDeck = React.createClass({
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Total'>Total</TableHeaderColumn>
         </BootstrapTable>
         <br/>
-        <BootstrapTable data={ renderOperations } striped={true} hover={true} trClassName="table" exportCSV={ true }>
+        <BootstrapTable data={ this.state.renderOperations } striped={true} hover={true} trClassName="table" exportCSV={ true }>
           <TableHeaderColumn width='140' dataField='Operations' isKey={ true }>Operations</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 1'>Month 1</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 2'>Month 2</TableHeaderColumn>
@@ -107,7 +128,7 @@ const ShowDeck = React.createClass({
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Total'>Total</TableHeaderColumn>
         </BootstrapTable>
         <br/>
-        <BootstrapTable data={ renderCapEx } striped={true} hover={true} trClassName="table" exportCSV={ true }>
+        <BootstrapTable data={ this.state.renderCapEx } striped={true} hover={true} trClassName="table" exportCSV={ true }>
           <TableHeaderColumn width='140' dataField='Capital Expenses' isKey={ true }>Capital Expenses</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 1'>Month 1</TableHeaderColumn>
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Month 2'>Month 2</TableHeaderColumn>
@@ -124,7 +145,7 @@ const ShowDeck = React.createClass({
           <TableHeaderColumn width='80' dataFormat={ this.priceFormatter } dataField='Total'>Total</TableHeaderColumn>
         </BootstrapTable>
         <h2 className="table-title">Revenue</h2>
-        <BootstrapTable data={ renderRev } striped={true} hover={true} trClassName="table" exportCSV={ true }>
+        <BootstrapTable data={ this.state.renderRev } striped={true} hover={true} trClassName="table" exportCSV={ true }>
           <TableHeaderColumn width='140' dataField='Revenues' isKey={ true }>Revenues</TableHeaderColumn>
           <TableHeaderColumn width='80' dataField='Month 1'>Month 1</TableHeaderColumn>
           <TableHeaderColumn width='80' dataField='Month 2'>Month 2</TableHeaderColumn>

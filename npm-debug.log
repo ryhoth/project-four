@@ -7,8 +7,8 @@
 6 silly lifecycle project-4@0.1.0~prestart: no script for prestart, continuing
 7 info lifecycle project-4@0.1.0~start: project-4@0.1.0
 8 verbose lifecycle project-4@0.1.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle project-4@0.1.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/ry2thery/project-four/frontend/node_modules/.bin:/usr/local/bin:/Users/ry2thery/.rbenv/bin:/Users/ry2thery/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin
-10 verbose lifecycle project-4@0.1.0~start: CWD: /Users/ry2thery/project-four/frontend
+9 verbose lifecycle project-4@0.1.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/ry2thery/project-four/node_modules/.bin:/usr/local/bin:/Users/ry2thery/.rbenv/bin:/Users/ry2thery/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin
+10 verbose lifecycle project-4@0.1.0~start: CWD: /Users/ry2thery/project-four
 11 silly lifecycle project-4@0.1.0~start: Args: [ '-c', 'webpack-dev-server --progress --inline --hot' ]
 12 silly lifecycle project-4@0.1.0~start: Returned: code: 1  signal: null
 13 info lifecycle project-4@0.1.0~start: Failed to exec start script
@@ -23,7 +23,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:850:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid project-4@0.1.0
-16 verbose cwd /Users/ry2thery/project-four/frontend
+16 verbose cwd /Users/ry2thery/project-four
 17 error Darwin 15.3.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "start"
 19 error node v5.8.0
